@@ -1,2 +1,2 @@
 # AnimalFarm
-Django_Project
+Personal Blog as a Django Project
