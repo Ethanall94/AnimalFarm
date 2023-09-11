@@ -1,11 +1,66 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static ' css/ '  %}">
     <title>Document</title>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Logo</div>
+        <nav>
+            <a href="#">일상</a>
+            <a href="#">요리</a>
+            <a href="#">여행</a>
+            <a href="#">영화</a>
+            <a href="#">IT</a>
+        </nav>
+        <a href="#" class="logout">Logout</a>
+        <button>Just Write!</button>
+    </header>
     
+    <!-- Content -->
+    <section class="content">
+        <div class="left-panel">
+            <input type="text" placeholder="Title">
+            <textarea placeholder="Content"></textarea>
+        </div>
+        <div class="right-panel">
+            <div class="ai-completion">AI 자동 완성</div>
+            <div class="topics">
+                <input type="radio" id="dailyLife" name="topic" value="dailyLife">
+                <label for="dailyLife">일상</label>
+                
+                <input type="radio" id="cooking" name="topic" value="cooking">
+                <label for="cooking">요리</label>
+                
+                <input type="radio" id="travel" name="topic" value="travel">
+                <label for="travel">여행</label>
+                
+                <input type="radio" id="movies" name="topic" value="movies">
+                <label for="movies">영화</label>
+                
+                <input type="radio" id="it" name="topic" value="it">
+                <label for="it">IT / 전자기기</label>
+            </div>
+            <div class="status">
+                상태: 미발행
+                <label for="imageUpload">이미지 업로드</label>
+                <input type="file" id="imageUpload" style="display: none;">
+                <button>임시저장</button>
+                <button>글 작성</button>
+            </div
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+        Made with <a href="https://www.djangoproject.com/">Django</a>
+    </footer>
+
 </body>
 </html>
