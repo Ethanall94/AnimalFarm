@@ -1,0 +1,2 @@
+# AnimalFarm
+Django_Project
