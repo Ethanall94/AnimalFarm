@@ -6,174 +6,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
-    <style>
-        .board {
-            width: 100%;
-            height: auto;
-            background: #F9F8F4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; 
-            padding: 20px 0;
-        }
-        
-        .navBars {
-            width: 100%;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .totalRectangle {
-            display: flex;
-            flex-direction: column;
-            width: 70%; 
-            height: auto;
-            justify-content: space-between;
-            padding: 0 10px; 
-            overflow: hidden;
-        }
-        
-        .top {
-            width: 100%;
-            height: auto;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .bottom {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .mainRectangle {
-            width: 70%; 
-            height: 500px;
-            border: 1px solid #CAC8C5;
-            display: flex;
-            flex-direction: column;
-            margin-right: 2%; 
-        }
-        
-        .subRectangle {
-            width: 30%; 
-            height: 500px;
-            border: 1px solid #CAC8C5;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .rectTop, .subRectReccomend {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: column;
-            padding: 10px;  
-        }
-        
-        .rectangleEdit, .previousPost, .nextPost {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .footer {
-            width: 100%;
-            height: 15%;
-            background: #E7E3DA;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; 
-            padding: 0 20px 10px 0;
-            flex-shrink: 0;
-        }
-        
-        @media (max-width: 1023px) {
-            .navBars {
-                height: 50px !important;
-            }
-            .top {
-                flex-direction: column;
-            }
-        
-            .mainRectangle, .subRectangle {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 2%;
-            }
-        }
-
-        @media (max-height: 530px) {
-            .navBars, .footer {
-                flex-shrink: 0;
-            }
-            
-            .totalRectangle {
-                flex-grow: 1;
-                overflow-y: auto;
-                padding: 0 10px 10px;
-            }
-            
-            .mainRectangle, .subRectangle {
-                flex-basis: auto;
-                flex-grow: 1;
-                flex-shrink: 1;
-                height: 300px;
-            }
-            
-            .rectangleEdit, .previousPost, .nextPost {
-                flex-basis: auto;
-                flex-grow: 1;
-                flex-shrink: 1;
-            }
-        }
-
-
-    </style>
+    <link rel="stylesheet" href="{% static 'css/nav_white.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board.css' %}">
+    <link href="https://fonts.cdnfonts.com/css/quicksilver" rel="stylesheet">
     <title>board</title>
 </head>
 <body>
-    <div class="board">
-        <div class="navBars">
-            이곳은 상단바
+    <nav id="nav">
+        <div class="logo">
+            <img src="{% static 'img/blackLogo.svg' %}" alt="">
+            <a href="#">MYLOG</a>
         </div>
+        
+        <div class="navBtn">
+            <ul>
+                <li><a href="">일상</a></li>
+                <li><a href="">요리</a></li>
+                <li><a href="">여행</a></li>
+                <li><a href="">영화</a></li>
+                <li><a href="">IT</a></li>
+                <li class="logoutBtn"><a href="{% url 'board-client' %}">Logout</a></li>
+            </ul>
+            <button><a href="{% url 'write' %}">Just Write!</a></button>
+        </div>
+    </nav>
+    <div class="board">
         <div class="totalRectangle">
             <div class="top">
                 <div class="mainRectangle">
                     <div class="rectTop">
                         <div id="dateCreate">
-                            2023.09.06
+                            {{ post.create_date }}
                         </div>
                         <div id="rectTitle">
-                            Lorem ipsum dolor
+                            {{ post.title }}
                         </div>
                         <div id="rectUser">
-                            by AnimalFarm
+                            {{ post.author }}
                         </div>
                         <div id="rectTag">
-                            일상
+                            {{ post.tag }}
                         </div>
                     </div>
                     <div class="rectMain">
-                        Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. 
-                        Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. 
-                        Ridiculus id purus feugiat et mi justo scelerisque euismod euismod.
+                        {{ post.content }}
                     </div>
                 </div>
                 <div class="subRectangle">
                     <div class="subRectTitle"></div>
                     <div class="subRectReccomend">
-                        <div id="reccomendPic"></div>
-                        <div id="reccomendTitle"></div>
+                        <div id="reccomendPic">
+                            
+                        </div>
+                        <div id="reccomendTitle">
+                            {{ post.title }}
+                        </div>
                     </div>
                     <div class="subRectReccomend">
-                        <div id="reccomendPic"></div>
-                        <div id="reccomendTitle"></div>
+                        <div id="reccomendPic">
+
+                        </div>
+                        <div id="reccomendTitle">
+                            {{ post.title }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -202,8 +98,8 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        Made with Django
-    </div>
+    <footer>
+        <p>Made with <span>Django</span></p>
+    </footer>
 </body>
 </html>

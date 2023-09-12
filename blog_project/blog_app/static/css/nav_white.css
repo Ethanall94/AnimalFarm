@@ -1,0 +1,151 @@
+* {
+    --nav-height: 105px;
+}
+
+#nav {
+    background-color: #F9F8F4;
+
+    z-index: 1;
+
+    width: 100%;
+    height: var(--nav-height);
+    position: fixed;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo {
+    position: relative;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    vertical-align: middle;
+}
+
+.logo a {
+    color: #F9F8F4;
+    text-decoration: none;
+
+    font-family: Quicksilver;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -1.4px;
+
+    position: absolute;
+    top: 28%;
+    left: 27%;
+}
+
+.navBtn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 40px;
+}
+
+.navBtn ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    gap: 40px;
+}
+
+.navBtn a {
+    text-align: center;
+    text-decoration: none;
+    color: #1E1E1E;
+    font-family: Pretendard;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.navBtn a:hover {
+    color: olivedrab;
+}
+
+.logoutBtn a {
+    font-weight: 700;
+}
+
+.navBtn button {
+    width: 100px;
+    height: 39px;
+    border: none;
+    border-radius: 2px;
+    background: #1E1E1E;
+}
+
+.navBtn button:hover {
+    background-color: olivedrab;
+}
+
+.navBtn button:active {
+    background-color: olive;
+}
+
+.navBtn button a {
+    color: #F9F8F4;
+    font-family: Pretendard;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.navBtn button>a:hover {
+    color: #F9F8F4;
+}
+
+/* footer */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+footer {
+    background-color: #E7E3DA;
+    height: 200px;
+}
+footer p {
+    color: #2B2B2B;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 208px;
+    padding-top: 148px;
+}
+footer span {
+    color: #2B2B2B;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+/* 반응형 */
+@media screen and (max-width: 768px) {
+    #nav {
+        --nav-height: 45px;
+        width: 100%;
+        height: var(--nav-height);
+    }
+
+    .logo img {
+        height: 35px;   
+        left: 0; 
+    }
+    
+    .logo a {
+        font-size: 14px;
+        left: 25%;
+    }
+
+    .navBtn {
+        display: none;
+    }
+
+}

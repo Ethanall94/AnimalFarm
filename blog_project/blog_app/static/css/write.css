@@ -1,0 +1,70 @@
+/* 9.12 write css 적용, 패딩값 추가  */
+.content {
+    padding-top: 120px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #F9F8F4;
+}
+
+form {
+    display: flex;
+}
+
+.aiCompletion,
+.topics,
+.status {
+    border: solid 2px #CAC8C5;
+    margin: 20px;
+    padding: 15px;
+}
+
+.aiCompletion {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 30px 0;
+    cursor: pointer;
+}
+
+.topics,
+.status {
+    display: flex;
+    flex-direction: column;
+}
+
+.topics {
+    gap: 5px;
+}
+
+.status {
+    gap: 10px;
+}
+
+.topicsTitle,
+.statusTitle {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.imageUpload {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.storageBtn {
+    margin-top: 30px;
+    padding: 2px 30px;
+    border: solid 1px black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#temporary {
+    background-color: #F9F8F4;
+}
+
+#postBtn {
+    background-color: black;
+    color: white;
+}

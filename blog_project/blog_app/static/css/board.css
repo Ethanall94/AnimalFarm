@@ -1,0 +1,114 @@
+.board {
+    width: 100%;
+    height: auto;
+    background: #F9F8F4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    padding-top: var(--nav-height);
+}
+
+.navBars {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.totalRectangle {
+    display: flex;
+    flex-direction: column;
+    width: 70%; 
+    height: auto;
+    justify-content: space-between;
+    padding: 0 10px; 
+    overflow: hidden;
+}
+
+.top {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mainRectangle {
+    width: 70%; 
+    height: 500px;
+    border: 1px solid #CAC8C5;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%; 
+}
+
+.subRectangle {
+    width: 30%; 
+    height: 500px;
+    border: 1px solid #CAC8C5;
+    display: flex;
+    flex-direction: column;
+}
+
+.rectTop, .subRectReccomend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;  
+}
+
+.rectangleEdit, .previousPost, .nextPost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+@media (max-width: 1023px) {
+    .navBars {
+        height: 50px !important;
+    }
+    .top {
+        flex-direction: column;
+    }
+
+    .mainRectangle, .subRectangle {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 2%;
+    }
+}
+
+@media (max-height: 530px) {
+    .navBars, .footer {
+        flex-shrink: 0;
+    }
+    
+    .totalRectangle {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 0 10px 10px;
+    }
+    
+    .mainRectangle, .subRectangle {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+        height: 300px;
+    }
+    
+    .rectangleEdit, .previousPost, .nextPost {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+}
