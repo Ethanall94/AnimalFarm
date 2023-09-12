@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog_app",
     'django_summernote',
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -97,8 +98,12 @@ WSGI_APPLICATION = "blog_project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "blog_project",
+        "USER": "blog_project_user",
+        "PASSWORD": get_secret("POSTGRESQL_PASSWORD"),
+        "HOST": get_secret("HOST"),
+        "PORT": "5432",
     }
 }
 

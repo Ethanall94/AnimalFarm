@@ -1,14 +1,17 @@
 from django.shortcuts import render, redirect
 from .forms import PostForm
+from .models import Post
+from rest_framework import viewsets
+from .serializers import PostSerializer
 
 # Create your views here.
 
-def board_cilent(request):
-    return render(request, 'blog_app/board-cilent.html')
+def board_client(request):
+    return render(request, 'board-client.html')
 def board_admin(request):
-    return render(request, 'blog_app/board-admin.html')
+    return render(request, 'board-admin.html')
 def login(request):
-    return render(request, 'blog_app/login.html')
+    return render(request, 'login.html')
 def write(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -22,5 +25,15 @@ def write(request):
         'form' : form
     }
     return render(request, 'blog_app/write.html', context)
+
 def board(request):
-    return render(request, 'blog_app/board.html')
+    try:
+        post = Post.objects.latest('create_date')
+    except:
+        post = None
+    return render(request, 'board.html', {'post': post})
+
+
+class PostViewset(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
