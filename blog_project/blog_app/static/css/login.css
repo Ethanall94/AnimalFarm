@@ -1,0 +1,84 @@
+body {
+    background: #F9F8F4;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: table;
+    align-items: center;
+}
+
+.login {
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.login h2 {
+    color: #1E1E1E;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+#ogin-form {
+    /* width: 300px; */
+    margin: 0px 570px;
+    border-radius: 2px;
+    border: 1px solid #CAC8C5;
+    background: #FFF;
+
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #CAC8C5;
+    padding: 10px;
+    outline: none;
+}
+
+input:last-child[value = 'Login'] {
+    width: 200px;
+    padding: 11px 82px;
+    
+    background: #1E1E1E;
+    border: none;
+    border-radius: 2px;
+
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #CAC8C5;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* 반응형 */
+@media screen and (max-width: 768px) {
+    #ogin-form {
+        margin: 0px 25%;
+        padding: 25px;
+    }
+
+    input {
+        padding: 2px;
+    }
+
+    input:last-child[value = 'Login'] {
+        width: 100%;
+        padding: 8px;
+    }
+}
