@@ -13,26 +13,25 @@
     <title>board</title>
 </head>
 <body>
-    
+    <nav id="nav">
+        <div class="logo">
+            <img src="{% static 'img/blackLogo.svg' %}" alt="">
+            <a href="#">MYLOG</a>
+        </div>
+        
+        <div class="navBtn">
+            <ul>
+                <li><a href="">일상</a></li>
+                <li><a href="">요리</a></li>
+                <li><a href="">여행</a></li>
+                <li><a href="">영화</a></li>
+                <li><a href="">IT</a></li>
+                <li class="logoutBtn"><a href="{% url 'board-client' %}">Logout</a></li>
+            </ul>
+            <button><a href="{% url 'write' %}">Just Write!</a></button>
+        </div>
+    </nav>
     <div class="board">
-        <nav id="nav">
-            <div class="logo">
-                <img src="{% static 'img/blackLogo.svg' %}" alt="">
-                <a href="#">MYLOG</a>
-            </div>
-            
-            <div class="navBtn">
-                <ul>
-                    <li><a href="">일상</a></li>
-                    <li><a href="">요리</a></li>
-                    <li><a href="">여행</a></li>
-                    <li><a href="">영화</a></li>
-                    <li><a href="">IT</a></li>
-                    <li class="logoutBtn"><a href="{% url 'board-client' %}">Logout</a></li>
-                </ul>
-                <button><a href="{% url 'write' %}">Just Write!</a></button>
-            </div>
-        </nav>
         <div class="totalRectangle">
             <div class="top">
                 <div class="mainRectangle">
@@ -57,12 +56,20 @@
                 <div class="subRectangle">
                     <div class="subRectTitle"></div>
                     <div class="subRectReccomend">
-                        <div id="reccomendPic"></div>
-                        <div id="reccomendTitle"></div>
+                        <div id="reccomendPic">
+                            
+                        </div>
+                        <div id="reccomendTitle">
+                            {{ post.title }}
+                        </div>
                     </div>
                     <div class="subRectReccomend">
-                        <div id="reccomendPic"></div>
-                        <div id="reccomendTitle"></div>
+                        <div id="reccomendPic">
+
+                        </div>
+                        <div id="reccomendTitle">
+                            {{ post.title }}
+                        </div>
                     </div>
                 </div>
             </div>

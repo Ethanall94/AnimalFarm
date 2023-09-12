@@ -24,7 +24,7 @@ def write(request):
     context = {
         'form' : form
     }
-    return render(request, 'blog_app/write.html', context)
+    return render(request, 'write.html', {'context':context})
 
 def board(request):
     try:

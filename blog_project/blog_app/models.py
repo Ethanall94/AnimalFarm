@@ -9,5 +9,5 @@ class Post(models.Model):
     create_date = models.DateField(auto_now_add=True)
     tag = models.CharField(max_length=50)
 
-    def __str__(self):
+    def __str__(self): 
         return self.title
