@@ -25,36 +25,48 @@
     
     <!-- Content -->
     <section class="content">
-        <div class="left-panel">
-            <input type="text" placeholder="Title">
-            <textarea placeholder="Content"></textarea>
-        </div>
-        <div class="right-panel">
-            <div class="ai-completion">AI 자동 완성</div>
-            <div class="topics">
-                <input type="radio" id="dailyLife" name="topic" value="dailyLife">
-                <label for="dailyLife">일상</label>
-                
-                <input type="radio" id="cooking" name="topic" value="cooking">
-                <label for="cooking">요리</label>
-                
-                <input type="radio" id="travel" name="topic" value="travel">
-                <label for="travel">여행</label>
-                
-                <input type="radio" id="movies" name="topic" value="movies">
-                <label for="movies">영화</label>
-                
-                <input type="radio" id="it" name="topic" value="it">
-                <label for="it">IT / 전자기기</label>
+        <form action="" method="POST" class="writeContent">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <div class="rightPanel">
+                <div class="aiCompletion">👩‍🔬 AI 자동 완성</div>
+                <div class="topics">
+                    <div class="topicsTitle">TOPIC</div>
+                        <div>
+                            <input type="radio" id="dailyLife" name="topic" value="dailyLife">
+                            <label for="dailyLife">일상</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cooking" name="topic" value="cooking">
+                            <label for="cooking">요리</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="travel" name="topic" value="travel">
+                            <label for="travel">여행</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="movies" name="topic" value="movies">
+                            <label for="movies">영화</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="it" name="topic" value="it">
+                            <label for="it">IT / 전자기기</label>
+                        </div>
+                </div>
+                <div class="status">
+                    <div class="statusTitle">UPLOAD INFO</div>
+                    상태: 미발행
+                    <label for="imageUpload" class="imageUpload">이미지 업로드</label>
+                    <input type="file" class="imageUpload" style="display: none;">
+                    <div class="statusBtn">
+                        <button class="storageBtn" id="temporary">임시저장</button>
+                        <input type="submit" value="글 작성" class="storageBtn" id="postBtn">
+                    </div>
+                </div>
             </div>
-            <div class="status">
-                상태: 미발행
-                <label for="imageUpload">이미지 업로드</label>
-                <input type="file" id="imageUpload" style="display: none;">
-                <button>임시저장</button>
-                <button>글 작성</button>
-            </div
-        </div>
+        </form>
     </section>
     
     <!-- Footer -->
