@@ -100,6 +100,31 @@
     color: #F9F8F4;
 }
 
+/* footer */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+footer {
+    background-color: #E7E3DA;
+    height: 200px;
+}
+footer p {
+    color: #2B2B2B;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 208px;
+    padding-top: 148px;
+}
+footer span {
+    color: #2B2B2B;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 
 /* 반응형 */
 @media screen and (max-width: 768px) {
