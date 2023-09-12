@@ -84,13 +84,16 @@
 
         .footer {
             width: 100%;
-            height: 15%;
+            height: 20vh;
             background: #E7E3DA;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: flex-end; 
-            padding: 0 20px 10px 0;
             flex-shrink: 0;
+        }
+
+        .footer>p {
+            padding: 0 50px 30px 0;
         }
         
         @media (max-width: 1023px) {
@@ -147,22 +150,20 @@
                 <div class="mainRectangle">
                     <div class="rectTop">
                         <div id="dateCreate">
-                            2023.09.06
+                            {{ post.create_date }}
                         </div>
                         <div id="rectTitle">
-                            Lorem ipsum dolor
+                            {{ post.title }}
                         </div>
                         <div id="rectUser">
-                            by AnimalFarm
+                            {{ post.author }}
                         </div>
                         <div id="rectTag">
-                            일상
+                            {{ post.tag }}
                         </div>
                     </div>
                     <div class="rectMain">
-                        Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. 
-                        Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. 
-                        Ridiculus id purus feugiat et mi justo scelerisque euismod euismod.
+                        {{ post.content }}
                     </div>
                 </div>
                 <div class="subRectangle">
@@ -203,7 +204,7 @@
         </div>
     </div>
     <div class="footer">
-        Made with Django
+        <p>Made with Django</p>
     </div>
 </body>
 </html>
