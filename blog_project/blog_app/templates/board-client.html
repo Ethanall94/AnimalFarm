@@ -1,22 +1,177 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <title>AnimalFarm</title>
+    <!-- 테스트를 위해 작성한 style -->
+    <style>
+        .cover {
+            height: 520px;
+            background: #1E1E1E;
+            color: #FFF;
+
+            # background-size: 600px 343px;
+            # background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU');
+            # background-repeat: no-repeat;
+        }
+        .coverImg {
+            opacity: 0.4;
+            float: right;
+        }
+        .coverImg img {
+            width: 600px;
+            height: 343px;
+            object-fit: cover;
+        }
+        .coverInner {
+            padding-top: 221px;
+            margin-left: 208px;
+            width: 525px;
+        }
+        .readMore {
+            width: 108px;
+            height: 39px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+            background-color: #3A3A3A;
+        }
+        .readMore a {
+            color: #FFF;
+            text-decoration: none;
+        }
+
+        .feeds {
+            margin: 54px 208px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(316px, 1fr));
+        }
+        .feed {
+            width: 316px;
+        }
+        .feed a {
+            color: black;
+            text-decoration: none;
+        }
+        .feed img {
+            width: 316px;
+            height: 220px;
+            object-fit: cover;
+
+            color: black;
+            text-decoration: none;
+        }
+        .feed>p {
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+        .feedInner p {
+            line-height: 25px;
+            word-break: break-all;
+        }
+        footer {
+            background-color: #E7E3DA;
+            height: 200px;
+        }
+        footer p {
+            padding-top: 148px;
+            margin-left: 75%;
+        }
+    </style>
 </head>
 <body>
-    <nav id="nav">
-        <a hef="">mylog로고이미지</a>
-        <ul>
-            <li><a href="">일상</a></li>
-            <li><a href="">요리</a></li>
-            <li><a href="">여행</a></li>
-            <li><a href="">영화</a></li>
-            <li><a href="">IT</a></li>
-        </ul>
-
-        <button>Login</button>
+    <nav>
+        load nav
     </nav>
+    <section class="cover">
+        <div class="coverImg">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+        </div>
+        <div class="coverInner">
+            <h1>Lorem ipsum dolor</h1>
+            <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            <div class="readMore"><a href="#">READ MORE</a></div>
+        </div>
+    </section>
+    <section class="feeds">
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+        <div class="feed">
+            <a href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLVEY5dO_NDM2MpN-GEbdHx_G1b3J9iZHWg&usqp=CAU" alt="">
+            </a>
+            <p>2023-09-07 12:13:01</p>
+            <a href="" class="feedInner">
+                <h2>Lorem ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent cursus aliquam pellentesque. Euismod consectetur fames vitae nunc gravida morbi felis porttitor integer. Ridiculus id purus feugiat et mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi placerat purus dolor luctus vitae pretium. Gravida faucibus scelerisque quis mi consequat malesuada.</p>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <p>Made with Django</p>
+    </footer>
 </body>
 </html>
