@@ -1,0 +1,129 @@
+body {
+    font-family: Pretendard;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F8F4;
+}
+
+.cover {
+    height: 520px;
+    background-color: #1E1E1E;
+    color: #FFF;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.coverInner h3 {
+    font-size: 48px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: normal;
+}
+
+.coverInner p {
+    font-weight: 400;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+
+.coverImg {
+    opacity: 0.4;
+    float: right;
+}
+
+.coverImg img {
+    width: 600px;
+    height: 343px;
+    object-fit: cover;
+}
+
+.coverInner {
+    padding-top: 221px;
+    margin-left: 208px;
+    width: 525px;
+}
+
+.readMore button {
+    background-color: #3a3a3a;
+    border-radius: 2px;
+    padding: 8px 18px;
+    width: fit-content;
+}
+
+.readMore button:hover {
+    background-color: #474747;
+    transition: transform 0.8s;
+}
+
+.readMore a {
+    text-align: center;
+    color: #fff;
+    font-family: Pretendard;
+    font-size: 13px
+}
+
+.feeds {
+    margin: 54px 208px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px 10px;
+}
+
+.feed {
+    width: 320px;
+    margin: 10px;
+    padding: 10px;
+    font-family: Pretendard;
+}
+
+.feed a {
+    color: #333;
+    font-family: Pretendard;
+    text-decoration: none;
+}
+
+.feed img {
+    width: 316px;
+    height: 220px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+
+}
+
+.feed p {
+    color: #1E1E1E;
+    font-size: 13px;
+    font-style: normal;
+    font-family: Pretendard;
+    line-height: 25px;
+}
+
+.feed > p {
+    line-height: 25px;
+    font-family: Pretendard;
+    word-break: break-all;
+}
+
+.feedInner h2 {
+    font-weight: bold;
+    font-size: 20px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.feedInner p {
+    color: #1E1E1E;
+    line-height: 25px;
+    word-break: break-all;
+    font-size: 13px;
+    font-style: normal;
+}
+
+footer {
+    background-color: #E7E3DA;
+    height: 200px;
+}
+
+footer p {
+    padding-top: 148px;
+    margin-left: 75%;
+}

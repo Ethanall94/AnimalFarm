@@ -4,7 +4,6 @@ from django import forms
 from .models import Post
 
 class PostForm(forms.ModelForm):
-    # title = forms.CharField(widget=forms.Textarea, label='')
     title = forms.CharField(widget=forms.TextInput
                             (attrs={
                                 'placeholder':' 제목',
@@ -16,18 +15,12 @@ class PostForm(forms.ModelForm):
     field_order = [
         'title', 'content'
     ]
-
-
     class Meta:
         model = Post
-        fields = ["title", "content"]
-        widgets = {
-            "content": SummernoteWidget(),
-        }
+        fields = ['title', 'content']
 
     def clean(self):
         clean_data = super().clean()
-
         title = clean_data.get('title','')
         content = clean_data.get('content', '')
 
