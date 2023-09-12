@@ -1,3 +1,11 @@
+/* 9.12 write css 적용, 패딩값 추가  */
+.content {
+    padding-top: 120px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #F9F8F4;
+}
+
 form {
     display: flex;
 }
@@ -22,7 +30,14 @@ form {
 .status {
     display: flex;
     flex-direction: column;
+}
 
+.topics {
+    gap: 5px;
+}
+
+.status {
+    gap: 10px;
 }
 
 .topicsTitle,
@@ -46,7 +61,7 @@ form {
 }
 
 #temporary {
-    background-color: white;
+    background-color: #F9F8F4;
 }
 
 #postBtn {
