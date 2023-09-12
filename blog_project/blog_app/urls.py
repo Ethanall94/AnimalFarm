@@ -2,11 +2,11 @@ from django.urls import path, include
 from django.contrib import admin
 from . import views
 from rest_framework.routers import DefaultRouter
-from .views import boardPostViewset
+from .views import PostViewset
 # from django.contrib.auth import views as auth_views
 
 router = DefaultRouter()
-router.register(r'boardposts', boardPostViewset)
+router.register(r'posts', PostViewset)
 
 urlpatterns = [
     path('', views.board_client, name='board-client'), # 메인 페이지
