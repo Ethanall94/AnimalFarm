@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/nav_white.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav_white.css' %}?{% now "U" %}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/board.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/board.css' %}?{% now "U" %}">
     <link href="https://fonts.cdnfonts.com/css/quicksilver" rel="stylesheet">
     <title>board</title>
 </head>
@@ -16,19 +16,19 @@
     <nav id="nav">
         <div class="logo">
             <img src="{% static 'img/blackLogo.svg' %}" alt="">
-            <a href="#">MYLOG</a>
+            <a href="/">MYLOG</a>
         </div>
         
         <div class="navBtn">
             <ul>
-                <li><a href="">일상</a></li>
-                <li><a href="">요리</a></li>
-                <li><a href="">여행</a></li>
-                <li><a href="">영화</a></li>
-                <li><a href="">IT</a></li>
-                <li class="logoutBtn"><a href="{% url 'board-client' %}">Logout</a></li>
+                <li><a href="{% url 'board-topic' topic='일상' %}">일상</a></li>
+                <li><a href="{% url 'board-topic' topic='요리' %}">요리</a></li>
+                <li><a href="{% url 'board-topic' topic='여행' %}">여행</a></li>
+                <li><a href="{% url 'board-topic' topic='영화' %}">영화</a></li>
+                <li><a href="{% url 'board-topic' topic='IT' %}">IT</a></li>
+                <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
             </ul>
-            <button><a href="{% url 'write' %}">Just Write!</a></button>
+            <a href="{% url 'write' %}"><button>Just Write!</button></a>
         </div>
     </nav>
     <div class="board">
@@ -37,49 +37,53 @@
                 <div class="mainRectangle">
                     <div class="rectTop">
                         <div id="dateCreate">
-                            {{ post.create_date }}
+                            {{ main_post.create_at }}
                         </div>
                         <div id="rectTitle">
-                            {{ post.title }}
+                            {{ main_post.title }}
                         </div>
                         <div id="rectUser">
-                            {{ post.author }}
+                            by 사용자(예시) {{ main_post.author_id }}
                         </div>
-                        <div id="rectTag">
-                            {{ post.tag }}
+                        <div id="rectTopic">
+                            {{ main_post.topic }}
+                            
                         </div>
                     </div>
                     <div class="rectMain">
-                        {{ post.content }}
+                        
+                        {{ main_post.content|safe }}
                     </div>
                 </div>
                 <div class="subRectangle">
-                    <div class="subRectTitle"></div>
+                    <div class="subRectTitle">Other posts<br>you may like</div>
+                    {% for recommended_post in recommended_posts %}
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
                             
                         </div>
                         <div id="reccomendTitle">
-                            {{ post.title }}
+                            {{ recommended_post.title }}
                         </div>
                     </div>
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
-
+                            <img src="" alt="">
                         </div>
                         <div id="reccomendTitle">
-                            {{ post.title }}
+                            {{ recommended_post.title }}
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="bottom">
                 <div class="rectangleEdit">
                     <div class="rectEditLeft">
-                        <div id="rectAmend"></div>
-                        <div id="rectDelete"></div>
+                        <div id="rectAmend">수정하기</div>
+                        <div id="rectDelete">삭제하기</div>
                     </div>
-                    <div class="rectShare"></div>
+                    <div id="rectShare">공유하기</div>
                 </div>
                 <div class="previousPost">
                     <div class="previous">이전글</div>
