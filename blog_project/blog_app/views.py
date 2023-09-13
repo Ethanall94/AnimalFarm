@@ -5,6 +5,7 @@ from .forms import PostForm
 from .models import Post
 from rest_framework import viewsets
 from .serializers import PostSerializer
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -35,19 +36,17 @@ def logout_user(request):
     messages.success(request, "Hey, you logged out! Please Try Again...")
     return redirect('/')
 
+# @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)
 def write(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = Post(**form.cleaned_data)
-            post.save()
-            return redirect('')
+            form.instance.author = request.user
+            post = form.save()
+            return redirect('board')
     else:
         form = PostForm()
-    context = {
-        'form' : form
-    }
-    return render(request, 'write.html', context)
+    return render(request, 'write.html', {'form' : form})
 
 def board(request, topic=None):
     try:
@@ -65,8 +64,12 @@ def board(request, topic=None):
         'recommended_posts': recommended_posts,
     }
 
-
     return render(request, 'board.html', context)
+            
+
+# def board(request):
+#     posts = Post.objects.all().order_by('-create_date')
+#     return render(request, 'board.html', {'posts': posts})
 
 
 class PostViewset(viewsets.ModelViewSet):
