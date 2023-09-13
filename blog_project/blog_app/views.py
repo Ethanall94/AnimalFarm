@@ -35,7 +35,8 @@ def board(request, topic=None):
             main_post = Post.objects.order_by('-create_at').first()
             recommended_posts = Post.objects.exclude(id=main_post.id).order_by('-create_at')[:2]
     except:
-        pass
+        main_post = None
+        recommended_posts = None
     context = {
         'main_post': main_post,
         'recommended_posts': recommended_posts,
