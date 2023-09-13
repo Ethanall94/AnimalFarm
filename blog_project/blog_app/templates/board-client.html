@@ -26,8 +26,17 @@
                 <li><a href="{% url 'board-topic' topic='여행' %}">여행</a></li>
                 <li><a href="{% url 'board-topic' topic='영화' %}">영화</a></li>
                 <li><a href="{% url 'board-topic' topic='IT' %}">IT</a></li>
+
+            {% if user.is_authenticated %}
+                <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
             </ul>
-            <a href="{% url 'login' %}"><button>Login</button></a>
+            <a href="{% url 'write' %}"><button>Just Write!</button></a>
+
+            {% else %}
+                </ul>
+                <a href="{% url 'login' %}"><button>Login</button></a>
+
+            {% endif %}
         </div>
     </nav>
     <section class="cover">

@@ -13,9 +13,16 @@
 <body>
     <div class="login">
         <h2>Login</h2>
-        <form method="post" action="" id="ogin-form">
+        
+        <form method="POST" action="" id="ogin-form">
+            {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
             <input type="text" name="username" placeholder="username">
-            <input type="password" name="userpassword" placeholder="password">
+            <input type="password" name="password" placeholder="password">
             <input type="submit" value="Login">
         </form>
     </div>
