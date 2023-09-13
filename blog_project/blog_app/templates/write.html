@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/write.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/write.css' %}{% now "U" %}">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/nav_white.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav_white.css' %}{% now "U" %}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link href="https://fonts.cdnfonts.com/css/quicksilver" rel="stylesheet">
     <title>Document</title>
@@ -16,7 +16,7 @@
     <nav id="nav">
         <div class="logo">
             <img src="{% static 'img/blackLogo.svg' %}" alt="">
-            <a href="#">MYLOG</a>
+            <a href="/">MYLOG</a>
         </div>
         
         <div class="navBtn">
@@ -28,7 +28,7 @@
                 <li><a href="">IT</a></li>
                 {% comment %} <li class="logoutBtn"><a href="{% url 'board-client' %}">Logout</a></li> {% endcomment %}
             </ul>
-            <button><a href="{% url 'write' %}">Just Write!</a></button>
+            <a href="{% url 'write' %}"><button>Just Write!</button></a>
         </div>
     </nav>
 
@@ -79,8 +79,11 @@
     </section>
     
     <!-- Footer -->
-    <footer class="main-footer">
+    {% comment %} <footer class="main-footer">
         Made with <a href="https://www.djangoproject.com/">Django</a>
+    </footer> {% endcomment %}
+    <footer>
+        <p>Made with <span>Django</span></p>
     </footer>
 </body>
 </html>

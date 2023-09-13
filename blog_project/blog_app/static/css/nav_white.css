@@ -88,7 +88,7 @@
     background-color: olive;
 }
 
-.navBtn button a {
+.navBtn a>button {
     color: #F9F8F4;
     font-family: Pretendard;
     text-align: center;
@@ -96,7 +96,7 @@
     font-weight: 700;
 }
 
-.navBtn button>a:hover {
+.navBtn button:hover {
     color: #F9F8F4;
 }
 
