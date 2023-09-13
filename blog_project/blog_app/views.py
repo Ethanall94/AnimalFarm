@@ -12,6 +12,7 @@ def board_client(request):
     return render(request, 'board-client.html')
 def board_admin(request):
     return render(request, 'board-admin.html')
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -20,12 +21,11 @@ def login_user(request):
         if user is not None:
             login(request, user)
             # Redirect to a success page.
-            # return redirect('/board_admin') # 페이지가 두개라면..
             return redirect('/')
         else:
             # Return an 'invalid login' error message.
             messages.success(request, "Oops! Try Again...")
-            return redirect('/login')
+            return redirect('login')
 
     else:
         return render(request, 'login.html')
@@ -33,7 +33,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, "Hey, you logged out! Please Try Again...")
-    return redirect('board-client')
+    return redirect('/')
 
 def write(request):
     if request.method == "POST":
