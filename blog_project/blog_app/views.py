@@ -3,6 +3,7 @@ from .forms import PostForm
 from .models import Post
 from rest_framework import viewsets
 from .serializers import PostSerializer
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -13,25 +14,28 @@ def board_admin(request):
 def login(request):
     return render(request, 'login.html')
 
+# @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)
 def write(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.author = request.user
             post = form.save()
-            return redirect('board.html')
+            return redirect('board')
     else:
         form = PostForm()
-    context = {
-        'form' : form
-    }
-    return render(request, 'write.html', {'context':context})
+    return render(request, 'write.html', {'form' : form})
 
 def board(request):
-    try:
-        post = Post.objects.latest('create_date')
-    except:
-        post = None
-    return render(request, 'board.html', {'post': post})
+    posts = Post.objects.all().order_by('-create_date')
+    return render(request, 'board.html', {'posts': posts})
+
+# def board(request):
+#     try:
+#         post = Post.objects.latest('create_date')
+#     except:
+#         post = None
+#     return render(request, 'board.html', {'post': post})
 
 
 class PostViewset(viewsets.ModelViewSet):

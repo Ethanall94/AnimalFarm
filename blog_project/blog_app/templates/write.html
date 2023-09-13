@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/nav_white.css' %}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link href="https://fonts.cdnfonts.com/css/quicksilver" rel="stylesheet">
-    <title>Document</title>
+    <title>Write</title>
 </head>
 <body>
     <nav id="nav">
@@ -36,34 +36,29 @@
     <section class="content">
         <form action="" method="POST" class="writeContent">
             {% csrf_token %}
-            <table>
-                {{form.as_table}}
-            </table>
+            <div>
+                {{ form.title }}
+                {{ form.content }}
+            </div>
             <div class="rightPanel">
                 <div class="aiCompletion">👩‍🔬 AI 자동 완성</div>
+
+                
+
                 <div class="topics">
-                    <div class="topicsTitle">TOPIC</div>
+                    <div class="topicsTitle">{{ form.topic.label }}</div>
+                    {% for topic_choice in form.topic_choices %}
                         <div>
-                            <input type="radio" id="dailyLife" name="topic" value="dailyLife">
-                            <label for="dailyLife">일상</label>
+                            <input type="radio" id="topic_{{ topic_choice.0 }}" name="topic" value="{{ topic_choice.0 }}">
+                            <label for="topic_{{ topic_choice.0 }}">{{ topic_choice.1 }}</label>
                         </div>
-                        <div>
-                            <input type="radio" id="cooking" name="topic" value="cooking">
-                            <label for="cooking">요리</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="travel" name="topic" value="travel">
-                            <label for="travel">여행</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="movies" name="topic" value="movies">
-                            <label for="movies">영화</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="it" name="topic" value="it">
-                            <label for="it">IT / 전자기기</label>
-                        </div>
+                    {% endfor %}
                 </div>
+                
+
+
+
+
                 <div class="status">
                     <div class="statusTitle">UPLOAD INFO</div>
                     상태: 미발행
@@ -78,9 +73,10 @@
         </form>
     </section>
     
+    
     <!-- Footer -->
-    <footer class="main-footer">
+    {% comment %} <footer class="main-footer">
         Made with <a href="https://www.djangoproject.com/">Django</a>
-    </footer>
+    </footer> {% endcomment %}
 </body>
 </html>
