@@ -26,15 +26,18 @@ body {
 
 #ogin-form {
     /* width: 300px; */
-    margin: 0px 570px;
+    width: 300px;
+    height: 264px;
+    margin: 0 auto;
     border-radius: 2px;
     border: 1px solid #CAC8C5;
     background: #FFF;
-
     padding: 50px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 23px;
+    justify-content: center;
 }
 
 input {
@@ -46,7 +49,8 @@ input {
 
 input:last-child[value = 'Login'] {
     width: 200px;
-    padding: 11px 82px;
+    padding: 11px 0;
+    margin: '0 auto';
     
     background: #1E1E1E;
     border: none;
