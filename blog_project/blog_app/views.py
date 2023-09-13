@@ -48,7 +48,7 @@ def write(request):
         form = PostForm()
     return render(request, 'write.html', {'form' : form})
 
-def board(request, topic=None):
+def board(request, topic=None, pk=None):
     try:
         if topic:
             main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
