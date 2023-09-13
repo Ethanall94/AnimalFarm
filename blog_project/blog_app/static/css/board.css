@@ -5,8 +5,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     padding-top: var(--nav-height);
+    font-family: Pretendard;
 }
 
 .navBars {
@@ -20,10 +21,10 @@
 .totalRectangle {
     display: flex;
     flex-direction: column;
-    width: 70%; 
+    width: 70%;
     height: auto;
     justify-content: space-between;
-    padding: 0 10px; 
+    padding: 0 10px;
     overflow: hidden;
 }
 
@@ -41,32 +42,35 @@
     gap: 10px;
 }
 
+/* 9.13 높이 수정 신지수 */
 .mainRectangle {
-    width: 70%; 
-    height: 500px;
+    width: 70%;
+    height: auto;
     border: 1px solid #CAC8C5;
     display: flex;
     flex-direction: column;
-    margin-right: 2%; 
+    margin-right: 2%;
 }
 
 .subRectangle {
-    width: 30%; 
+    width: 30%;
     height: 500px;
     border: 1px solid #CAC8C5;
     display: flex;
     flex-direction: column;
 }
 
-.rectTop, .subRectReccomend {
+.rectTop,
+.subRectReccomend {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    padding: 10px;  
 }
 
-.rectangleEdit, .previousPost, .nextPost {
+.rectangleEdit,
+.previousPost,
+.nextPost {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,11 +81,13 @@
     .navBars {
         height: 50px !important;
     }
+
     .top {
         flex-direction: column;
     }
 
-    .mainRectangle, .subRectangle {
+    .mainRectangle,
+    .subRectangle {
         width: 100%;
         margin-right: 0;
         margin-bottom: 2%;
@@ -89,26 +95,113 @@
 }
 
 @media (max-height: 530px) {
-    .navBars, .footer {
+
+    .navBars,
+    .footer {
         flex-shrink: 0;
     }
-    
+
     .totalRectangle {
         flex-grow: 1;
         overflow-y: auto;
         padding: 0 10px 10px;
     }
-    
-    .mainRectangle, .subRectangle {
+
+    .mainRectangle,
+    .subRectangle {
         flex-basis: auto;
         flex-grow: 1;
         flex-shrink: 1;
         height: 300px;
     }
-    
-    .rectangleEdit, .previousPost, .nextPost {
+
+    .rectangleEdit,
+    .previousPost,
+    .nextPost {
         flex-basis: auto;
         flex-grow: 1;
         flex-shrink: 1;
     }
+}
+
+/* 9/13 신지수 post css추가 */
+.rectTop {
+    padding: 40px 30px 0 30px;
+    gap: 15px;
+}
+
+#dateCreate,
+#rectUser {
+    color: #7c7a7a;
+    font-size: 15px;
+}
+
+#rectTitle {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#rectTopic {
+    border: solid 1px #E1E0DB;
+    background-color: #E1E0DB;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.rectMain {
+    padding: 30px;
+    gap: 3px;
+}
+
+.rectMain p {
+    line-height: 22px;
+}
+
+.rectMain p img {
+    max-width: 100%;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.subRectTitle {
+    font-size: 30px;
+    font-weight: bold;
+    color: #A6A5A1;
+    padding: 20px 15px;
+}
+
+.subRectReccomend {
+    border: 1px solid #CAC8C5;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.rectEditLeft {
+    display: flex;
+    gap: 5px;
+}
+
+#rectAmend,
+#rectDelete,
+#rectShare {
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
+#rectAmend {
+    border: 1px solid #E1E0DB;
+    background-color: #E1E0DB;
+}
+
+#rectDelete {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+#rectShare {
+    border: 1px solid #D9D9D9;
 }
