@@ -12,13 +12,13 @@ def board_admin(request):
     return render(request, 'board-admin.html')
 def login(request):
     return render(request, 'login.html')
-
 def write(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save()
-            return redirect('board.html')
+            post = Post(**form.cleaned_data)
+            post.save()
+            return redirect('')
     else:
         form = PostForm()
     context = {
@@ -35,5 +35,5 @@ def board(request):
 
 
 class PostViewset(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-views')
     serializer_class = PostSerializer
