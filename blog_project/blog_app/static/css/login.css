@@ -32,7 +32,7 @@ body {
     border-radius: 2px;
     border: 1px solid #CAC8C5;
     background: #FFF;
-    padding: 50px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,16 +73,17 @@ input::placeholder {
 /* 반응형 */
 @media screen and (max-width: 768px) {
     #ogin-form {
-        margin: 0px 25%;
-        padding: 25px;
+        width: 50%;
+        margin: 0 auto;
+        padding: 15px;
     }
 
     input {
-        padding: 2px;
+        padding: 8px;
     }
 
     input:last-child[value = 'Login'] {
-        width: 100%;
-        padding: 8px;
+        width: 50%;
+        padding: 10px;
     }
 }
