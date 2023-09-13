@@ -21,11 +21,11 @@
         
         <div class="navBtn">
             <ul>
-                <li><a href="">일상</a></li>
-                <li><a href="">요리</a></li>
-                <li><a href="">여행</a></li>
-                <li><a href="">영화</a></li>
-                <li><a href="">IT</a></li>
+                <li><a href="{% url 'board-topic' topic='일상' %}">일상</a></li>
+                <li><a href="{% url 'board-topic' topic='요리' %}">요리</a></li>
+                <li><a href="{% url 'board-topic' topic='여행' %}">여행</a></li>
+                <li><a href="{% url 'board-topic' topic='영화' %}">영화</a></li>
+                <li><a href="{% url 'board-topic' topic='IT' %}">IT</a></li>
                 <li class="logoutBtn"><a href="{% url 'board-client' %}">Logout</a></li>
             </ul>
             <a href="{% url 'write' %}"><button>Just Write!</button></a>
@@ -37,16 +37,16 @@
                 <div class="mainRectangle">
                     <div class="rectTop">
                         <div id="dateCreate">
-                            {{ post.create_date }}
+                            {{ main_post.create_at }}
                         </div>
                         <div id="rectTitle">
-                            {{ post.title }}
+                            {{ main_post.title }}
                         </div>
                         <div id="rectUser">
-                            {{ post.author }}
+                            {{ main_post.author_id }}
                         </div>
-                        <div id="rectTag">
-                            {{ post.tag }}
+                        <div id="rectTopic">
+                            {{ main_post.Topic }}
                         </div>
                     </div>
                     <div class="rectMain">
@@ -55,6 +55,7 @@
                 </div>
                 <div class="subRectangle">
                     <div class="subRectTitle"></div>
+                    {% for recommended_post in recommended_posts %}
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
                             
@@ -65,12 +66,13 @@
                     </div>
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
-
+                            <img src="" alt="">
                         </div>
                         <div id="reccomendTitle">
-                            {{ post.title }}
+                            {{ recommended_post.title }}
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="bottom">

@@ -26,12 +26,23 @@ def write(request):
     }
     return render(request, 'write.html', context)
 
-def board(request):
+def board(request, topic=None):
     try:
-        post = Post.objects.latest('create_date')
+        if topic:
+            main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
+            recommended_posts = Post.objects.filter(topic=topic).exclude(id=main_post.id).order_by('-create_at')[:2]
+        else:
+            main_post = Post.objects.order_by('-create_at').first()
+            recommended_posts = Post.objects.exclude(id=main_post.id).order_by('-create_at')[:2]
     except:
-        post = None
-    return render(request, 'board.html', {'post': post})
+        pass
+    context = {
+        'main_post': main_post,
+        'recommended_posts': recommended_posts,
+    }
+
+
+    return render(request, 'board.html', context)
 
 
 class PostViewset(viewsets.ModelViewSet):

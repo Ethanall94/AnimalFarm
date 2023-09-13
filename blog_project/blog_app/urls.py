@@ -14,5 +14,6 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('board_admin/',views.board_admin, name='board_admin'),
     path('board/',views.board, name='board'),
+    path('board/<str:topic>/', views.board, name='board-topic'),
     path('api/', include(router.urls)),
 ]
