@@ -47,12 +47,6 @@ form {
     font-weight: bold;
 }
 
-.imageUpload {
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-position: under;
-}
-
 .storageBtn {
     margin-top: 30px;
     padding: 2px 30px;
