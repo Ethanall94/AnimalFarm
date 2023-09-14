@@ -60,7 +60,7 @@
                     {% for recommended_post in recommended_posts %}
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
-                            
+                            <img src="{{ recommended_post.content_poster.url }}">
                         </div>
                         <div id="reccomendTitle">
                             {{ recommended_post.title }}
@@ -68,7 +68,7 @@
                     </div>
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
-                            <img src="" alt="">
+                            <img src="{{ recommended_post.content_poster.url }}">
                         </div>
                         <div id="reccomendTitle">
                             {{ recommended_post.title }}
