@@ -43,9 +43,9 @@
     <section class="cover">
         <div class="container">
             <div class="coverInner">
-                <h3>{{ main.title }}</h3>
+                <h3>{{ main.title|title }}</h3>
                 <p>
-                    {{ main.content }}
+                    {{ main.content|safe|truncatewords_html:50 }}
                 </p>
                 <div class="readMore">
                     <button>
@@ -66,11 +66,12 @@
                     <img src="media/{{ post.content_poster }}" alt="">
                 </a>
             </div>
-            <p>{{ post.create_at }}</p>
+            
+            <p>{{ post.create_at|date:"Y-m-d" }} {{ post.create_at|time:"H:i" }}</p>
             <a href="" class="feedInner">
-                <h2>{{ post.title }}</h2>
+                <h2>{{ post.title|title }}</h2>
                 <p>
-                    {{ post.content }}
+                    {{ post.content|safe|truncatewords_html:20 }}
                 </p>
             </a>
         </div>
