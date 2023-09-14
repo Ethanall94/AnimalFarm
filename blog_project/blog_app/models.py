@@ -12,8 +12,7 @@ class Post(models.Model):
     views = models.PositiveIntegerField(default=0)
     update_at = models.DateTimeField(default=timezone.now)
     content_poster = models.ImageField(upload_to='posters/')
-
-    # image = models.ImageField(upload_to='images/')
+    is_draft = models.BooleanField(default=False)
 
     def __str__(self): 
         return self.title
