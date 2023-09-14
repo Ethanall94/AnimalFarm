@@ -36,13 +36,17 @@ def logout_user(request):
 
 # post_list
 def board_client(request, topic=None):
-
-    if topic:
-            main = Post.objects.all().filter(topic=topic).order_by('-views').first()
-            posts = Post.objects.all().filter(topic=topic).exclude(id=main.id).order_by('-views')
-    else:
-        main = Post.objects.all().order_by('-views').first()
-        posts = Post.objects.all().exclude(id=main.id).order_by('-views')
+    try:
+        if topic:
+                main = Post.objects.all().filter(topic=topic).order_by('-views').first()
+                posts = Post.objects.all().filter(topic=topic).exclude(id=main.id).order_by('-views')
+        else:
+            main = Post.objects.all().order_by('-views').first()
+            posts = Post.objects.all().exclude(id=main.id).order_by('-views')
+    
+    except:
+        main = None
+        posts = None
         
     content = {
         'main': main,
