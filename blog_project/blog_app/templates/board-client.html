@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="coverImg">
-                <img src="{% static 'img/coverImg.svg' %}" alt="" />
+                <img src="media/{{ main.content_poster }}" alt="">
             </div>
         </div>
     </section>
@@ -63,15 +63,14 @@
         <div class="feed">
             <div class= "feedImg">
                 <a href="">
-                    {{ post.content | safe}}
+                    <img src="media/{{ post.content_poster }}" alt="">
                 </a>
-                {{ post.content | safe}}
             </div>
             <p>{{ post.create_at }}</p>
             <a href="" class="feedInner">
                 <h2>{{ post.title }}</h2>
                 <p>
-                    
+                    {{ post.content }}
                 </p>
             </a>
         </div>
