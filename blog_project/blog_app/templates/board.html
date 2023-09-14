@@ -43,18 +43,20 @@
                             {{ main_post.title }}
                         </div>
                         <div id="rectUser">
-                            {{ main_post.author_id }}
+                            by 사용자(예시) {{ main_post.author_id }}
                         </div>
                         <div id="rectTopic">
                             {{ main_post.topic }}
+                            
                         </div>
                     </div>
                     <div class="rectMain">
-                        {{ main_post.content }}
+                        
+                        {{ main_post.content|safe }}
                     </div>
                 </div>
                 <div class="subRectangle">
-                    <div class="subRectTitle"></div>
+                    <div class="subRectTitle">Other posts<br>you may like</div>
                     {% for recommended_post in recommended_posts %}
                     <div class="subRectReccomend">
                         <div id="reccomendPic">
