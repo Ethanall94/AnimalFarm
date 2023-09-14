@@ -1,19 +1,18 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
-from .forms import PostForm
-from .models import Post
-from rest_framework import viewsets
-from .serializers import PostSerializer
+from django.shortcuts               import render, redirect
+from django.contrib.auth            import authenticate, login, logout
+from django.contrib                 import messages
 from django.contrib.auth.decorators import login_required
+from rest_framework                 import viewsets
+from .forms                         import PostForm
+from .models                        import Post
+from .serializers                   import PostSerializer
+# import openai
 
 # Create your views here.
-
-def board_client(request):
-    return render(request, 'board-client.html')
 def board_admin(request):
     return render(request, 'board-admin.html')
 
+# login
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -21,20 +20,37 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirect to a success page.
             return redirect('/')
         else:
-            # Return an 'invalid login' error message.
             messages.success(request, "Oops! Try Again...")
             return redirect('login')
 
     else:
         return render(request, 'login.html')
 
+# logout
 def logout_user(request):
     logout(request)
     messages.success(request, "Hey, you logged out! Please Try Again...")
     return redirect('/')
+
+# post_list
+def board_client(request, topic=None):
+
+    if topic:
+            main = Post.objects.all().filter(topic=topic).order_by('-views').first()
+            posts = Post.objects.filter(topic=topic).exclude(id=main.id).order_by('-views')
+    else:
+        main = Post.objects.all().order_by('-views').first()
+        posts = Post.objects.all().exclude(id=main.id).order_by('-views')
+        
+    content = {
+        'main': main,
+        'posts': posts,
+    }
+    
+    return render(request, 'board-client.html', content)
+
 
 # @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)
 def write(request):
