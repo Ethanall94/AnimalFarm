@@ -58,20 +58,22 @@
                 <div class="subRectangle">
                     <div class="subRectTitle">Other posts<br>you may like</div>
                     {% for recommended_post in recommended_posts %}
-                    <div class="subRectReccomend">
-                        <div id="reccomendPic">
-                            <img src="{{ recommended_post.content_poster.url }}">
+                    <div id="subRectangleSmall">
+                        <div class="subRectReccomend">
+                            <div id="reccomendPic">
+                                <img src="{{ recommended_post.content_poster.url }}">
+                            </div>
+                            <div id="reccomendTitle">
+                                {{ recommended_post.title }}
+                            </div>
                         </div>
-                        <div id="reccomendTitle">
-                            {{ recommended_post.title }}
-                        </div>
-                    </div>
-                    <div class="subRectReccomend">
-                        <div id="reccomendPic">
-                            <img src="{{ recommended_post.content_poster.url }}">
-                        </div>
-                        <div id="reccomendTitle">
-                            {{ recommended_post.title }}
+                        <div class="subRectReccomend">
+                            <div id="reccomendPic">
+                                {{ recommended_post.content_poster }}
+                            </div>
+                            <div id="reccomendTitle">
+                                {{ recommended_post.title }}
+                            </div>
                         </div>
                     </div>
                     {% endfor %}
