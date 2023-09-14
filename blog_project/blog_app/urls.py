@@ -10,7 +10,7 @@ router.register(r'posts', PostViewset)
 
 urlpatterns = [
     path('', views.board_client, name='board-client'), # 메인 페이지
-    path('<str:topic>/', views.board_client, name='board-client_topic'), # 메인 페이지
+    path('post/<str:topic>/', views.board_client, name='board-client_topic'), # 메인 페이지
     path('write/', views.write, name='write'),
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
