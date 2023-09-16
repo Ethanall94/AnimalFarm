@@ -26,6 +26,10 @@
     vertical-align: middle;
 }
 
+.logo_img {
+    content: url("127.0.0.1:8000/static/img/blackLogo.svg");
+}
+
 .logo a {
     color: #F9F8F4;
     text-decoration: none;
