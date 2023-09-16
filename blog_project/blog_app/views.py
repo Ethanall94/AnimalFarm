@@ -8,10 +8,6 @@ from .models                        import Post
 from .serializers                   import PostSerializer
 # import openai
 
-# Create your views here.
-def board_admin(request):
-    return render(request, 'board-admin.html')
-
 # login
 def login_user(request):
     if request.method == "POST":
@@ -35,25 +31,17 @@ def logout_user(request):
     return redirect('/')
 
 # post_list
-def board_client(request, topic=None):
+def post_list(request, topic=None):
     try:
         if topic:
-                main = Post.objects.all().filter(topic=topic).order_by('-views').first()
-                posts = Post.objects.all().filter(topic=topic).exclude(id=main.id).order_by('-views')
+                posts = Post.objects.all().filter(topic=topic).order_by('-views')
         else:
-            main = Post.objects.all().order_by('-views').first()
-            posts = Post.objects.all().exclude(id=main.id).order_by('-views')
-    
+            posts = Post.objects.all().order_by('-views')
+
     except:
-        main = None
         posts = None
-        
-    content = {
-        'main': main,
-        'posts': posts,
-    }
-    
-    return render(request, 'board-client.html', content)
+
+    return render(request, 'post-list.html', {'posts' : posts})
 
 
 # @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)

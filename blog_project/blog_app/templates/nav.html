@@ -8,11 +8,11 @@
     
     <div class="navBtn">
         <ul>
-            <li><a href="{% url 'board-topic' topic='일상' %}">일상</a></li>
-            <li><a href="{% url 'board-topic' topic='요리' %}">요리</a></li>
-            <li><a href="{% url 'board-topic' topic='여행' %}">여행</a></li>
-            <li><a href="{% url 'board-topic' topic='영화' %}">영화</a></li>
-            <li><a href="{% url 'board-topic' topic='IT' %}">IT</a></li>
+            <li><a href="{% url 'post-topic' topic='일상' %}">일상</a></li>
+            <li><a href="{% url 'post-topic' topic='요리' %}">요리</a></li>
+            <li><a href="{% url 'post-topic' topic='여행' %}">여행</a></li>
+            <li><a href="{% url 'post-topic' topic='영화' %}">영화</a></li>
+            <li><a href="{% url 'post-topic' topic='IT' %}">IT</a></li>
 
         {% if user.is_authenticated %}
             <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
