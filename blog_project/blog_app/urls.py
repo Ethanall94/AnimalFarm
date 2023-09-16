@@ -11,8 +11,12 @@ router.register(r'posts', PostViewset)
 urlpatterns = [
     path('', views.board_client, name='board-client'), # 메인 페이지
     path('write/', views.write, name='write'),
-    path('login', views.login, name='login'),
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
     path('board_admin/',views.board_admin, name='board_admin'),
     path('board/',views.board, name='board'),
+    path('board/<str:topic>/', views.board, name='board-topic'),
     path('api/', include(router.urls)),
+    path('autocomplete/', views.autocomplete, name='autocomplete'),
+    path('write/<int:post_id>/edit/', views.write, name='edit'),
 ]

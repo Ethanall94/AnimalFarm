@@ -10,11 +10,16 @@ form {
     display: flex;
 }
 
+.rightPanel {
+    display: grid;
+}
+
 .aiCompletion,
 .topics,
-.status {
+.status,
+.temporaryList {
     border: solid 2px #CAC8C5;
-    margin: 20px;
+    margin: 8px;
     padding: 15px;
 }
 
@@ -41,17 +46,20 @@ form {
 }
 
 .topicsTitle,
-.statusTitle {
+.statusTitle,
+#temporaryTitle {
     font-size: 18px;
     font-weight: bold;
 }
 
-.storageBtn {
-    margin-top: 30px;
+.storageBtn,
+#temporary {
+    margin-top: 15px;
     padding: 2px 30px;
     border: solid 1px black;
     border-radius: 3px;
     cursor: pointer;
+    width: 45%;
 }
 
 #temporary {
@@ -61,4 +69,37 @@ form {
 #postBtn {
     background-color: black;
     color: white;
+}
+
+/* 9.16 임시저장 목록 신지수 */
+.temporaryList {
+    border: solid 2px #CAC8C5;
+
+}
+
+#temporaryTitle {
+    padding-bottom: 10px;
+}
+
+#temporaryItem {
+    max-height: 70%;
+    overflow-y: scroll;
+    gap: 5px;
+}
+
+#temporaryItem::-webkit-scrollbar {
+    width: 10px;
+}
+
+#temporaryItem::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+.loadDraft {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
 }
