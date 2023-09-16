@@ -21,11 +21,11 @@
         
         <div class="navBtn">
             <ul>
-                <li><a href="{% url 'board-topic' topic='일상' %}">일상</a></li>
-                <li><a href="{% url 'board-topic' topic='요리' %}">요리</a></li>
-                <li><a href="{% url 'board-topic' topic='여행' %}">여행</a></li>
-                <li><a href="{% url 'board-topic' topic='영화' %}">영화</a></li>
-                <li><a href="{% url 'board-topic' topic='IT' %}">IT</a></li>
+                <li><a href="{% url 'board-client_topic' topic='일상' %}">일상</a></li>
+                <li><a href="{% url 'board-client_topic' topic='요리' %}">요리</a></li>
+                <li><a href="{% url 'board-client_topic' topic='여행' %}">여행</a></li>
+                <li><a href="{% url 'board-client_topic' topic='영화' %}">영화</a></li>
+                <li><a href="{% url 'board-client_topic' topic='IT' %}">IT</a></li>
 
             {% if user.is_authenticated %}
                 <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
@@ -39,17 +39,13 @@
             {% endif %}
         </div>
     </nav>
+
     <section class="cover">
         <div class="container">
             <div class="coverInner">
-                <h3>Lorem ipsum dolor</h3>
+                <h3>{{ main.title|title }}</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo scelerisque euismod euismod. Turpis dictumst luctus nisi
-                    placerat purus dolor luctus vitae pretium. Gravida faucibus
-                    scelerisque quis mi consequat malesuada.
+                    {{ main.content|safe|truncatewords_html:50 }}
                 </p>
                 <div class="readMore">
                     <button>
@@ -58,114 +54,30 @@
                 </div>
             </div>
             <div class="coverImg">
-                <img src="{% static 'img/coverImg.svg' %}" alt="" />
+                <img src="media/{{ main.content_poster }}" alt="">
             </div>
         </div>
     </section>
     <section class="feeds">
+        {% for post in posts %}
         <div class="feed">
             <div class= "feedImg">
                 <a href="">
-                    <img src="{% static 'img/feed1.svg' %}" alt="" />
+                    <img src="media/{{ post.content_poster }}" alt="">
                 </a>
             </div>
-            <p>2023-09-07 12:13:01</p>
+            
+            <p>{{ post.create_at|date:"Y-m-d" }} {{ post.create_at|time:"H:i" }}</p>
             <a href="" class="feedInner">
-                <h2>Lorem ipsum dolor</h2>
+                <h2>{{ post.title|title }}</h2>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo
+                    {{ post.content|safe|truncatewords_html:20 }}
                 </p>
             </a>
         </div>
-        <div class="feed">
-            <div class= "feedImg">
-                <a href="">
-                    <img src="{% static 'img/feed2.svg' %}" alt="" />
-                </a>
-            </div>
-            <p>2023-09-07 12:13:01</p>
-            <a href="" class="feedInner">
-                <h2>Lorem ipsum dolor</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo
-                </p>
-            </a>
-        </div>
-        <div class="feed">
-            <div class= "feedImg">
-                <a href="">
-                    <img src="{% static 'img/feed3.svg' %}" alt="" />
-                </a>
-            </div>
-            <p>2023-09-07 12:13:01</p>
-            <a href="" class="feedInner">
-                <h2>Lorem ipsum dolor</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo
-                </p>
-            </a>
-        </div>
-        <div class="feed">
-            <div class= "feedImg">
-                <a href="">
-                    <img src="{% static 'img/feed4.svg' %}" alt="" />
-                </a>
-            </div>
-            <p>2023-09-07 12:13:01</p>
-            <a href="" class="feedInner">
-                <h2>Lorem ipsum dolor</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo
-                </p>
-            </a>
-        </div>
-        <div class="feed">
-            <div class= "feedImg">
-                <a href="">
-                    <img src="{% static 'img/feed5.svg' %}" alt="" />
-                </a>
-            </div>
-            <p>2023-09-07 12:13:01</p>
-            <a href="" class="feedInner">
-                <h2>Lorem ipsum dolor</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo
-                </p>
-            </a>
-        </div>
-        <div class="feed">
-            <div class= "feedImg">
-                <a href="">
-                    <img src="{% static 'img/feed3.svg' %}" alt="" />
-                </a>
-            </div>
-            <p>2023-09-07 12:13:01</p>
-            <a href="" class="feedInner">
-                <h2>Lorem ipsum dolor</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur. Non pretium arcu praesent
-                    cursus aliquam pellentesque. Euismod consectetur fames vitae nunc
-                    gravida morbi felis porttitor integer. Ridiculus id purus feugiat et
-                    mi justo
-                </p>
-            </a>
-        </div>
+        {% endfor %}
     </section>
+
     <footer>
         <p>Made with <span>Django</span></p>
     </footer>

@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-around;
     background-color: #F9F8F4;
+    font-family: Pretendard;
 }
 
 form {
@@ -44,12 +45,6 @@ form {
 .statusTitle {
     font-size: 18px;
     font-weight: bold;
-}
-
-.imageUpload {
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-position: under;
 }
 
 .storageBtn {

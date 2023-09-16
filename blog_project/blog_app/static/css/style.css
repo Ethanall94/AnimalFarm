@@ -153,3 +153,8 @@ footer p {
     padding-top: 148px;
     margin-left: 75%;
 }
+
+.coverInner img,
+.feedInner img {
+    display: none;
+}

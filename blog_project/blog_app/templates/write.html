@@ -38,13 +38,10 @@
             {% csrf_token %}
             <div>
                 {{ form.title }}
-                {{ form.content }}
+                {{ form.content|safe }}
             </div>
             <div class="rightPanel">
                 <div class="aiCompletion">👩‍🔬 AI 자동 완성</div>
-
-                
-
                 <div class="topics">
                     <div class="topicsTitle">{{ form.topic.label }}</div>
                     {% for topic_choice in form.topic_choices %}
@@ -54,16 +51,11 @@
                         </div>
                     {% endfor %}
                 </div>
-                
-
-
-
-
                 <div class="status">
                     <div class="statusTitle">UPLOAD INFO</div>
                     상태: 미발행
-                    <label for="imageUpload" class="imageUpload">이미지 업로드</label>
-                    <input type="file" class="imageUpload" style="display: none;">
+                    <label for="imageUpload" class="imageUpload">표지 업로드</label>
+                    <input type="file" class="imageUpload" name="content_poster">
                     <div class="statusBtn">
                         <button class="storageBtn" id="temporary">임시저장</button>
                         <input type="submit" value="글 작성" class="storageBtn" id="postBtn">
@@ -72,12 +64,6 @@
             </div>
         </form>
     </section>
-    
-    
-    <!-- Footer -->
-    {% comment %} <footer class="main-footer">
-        Made with <a href="https://www.djangoproject.com/">Django</a>
-    </footer> {% endcomment %}
     <footer>
         <p>Made with <span>Django</span></p>
     </footer>

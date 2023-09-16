@@ -9,8 +9,7 @@ class PostForm(forms.ModelForm):
         widget=forms.TextInput
             (attrs={
                 'placeholder':' 제목',
-                'style': 'width: 99%; height: 30px; border: solid 1px #CAC8C5; border-radius:3px;'
-                }),
+                'style': 'width: 99%; height: 30px; border: solid 1px #CAC8C5; border-radius:3px;'}),
                 label= '',required=True)
     
     content = forms.CharField(widget=SummernoteWidget(),
@@ -21,19 +20,17 @@ class PostForm(forms.ModelForm):
         ('요리', '요리'),
         ('여행', '여행'),
         ('영화', '영화'),
-        ('IT / 전자기기', 'IT/전자기기'),
-    ]
+        ('IT / 전자기기', 'IT/전자기기'),]
 
     topic = forms.ChoiceField(
         choices = topic_choices,
         widget = forms.RadioSelect,
         label = 'TOPIC',
-        required = True
-    )
+        required = True)
     
     class Meta:
         model = Post
-        fields = ['title', 'content', 'topic']
+        fields = ['title', 'content', 'topic', 'content_poster']
 
     def clean(self):
         clean_data = super().clean()
@@ -43,7 +40,7 @@ class PostForm(forms.ModelForm):
 
         if title == '':
             self.add_error('title', '글 제목을 입력하세요')
-        elif content == '':
+        elif content == "":
             self.add_error('content', '글 내용을 입력하세요')
         elif topic == '':
             self.add_error('content', 'topic을 선택하세요')
