@@ -36,6 +36,9 @@
             <div class="top">
                 <div class="mainRectangle">
                     <div class="rectTop">
+                        {% if main_post.is_draft %}
+                        <div>🔒임시 저장된 글입니다.</div>
+                        {% endif %}
                         <div id="dateCreate">
                             {{ main_post.create_at }}
                         </div>

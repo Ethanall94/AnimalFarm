@@ -12,7 +12,11 @@ class Post(models.Model):
     views = models.PositiveIntegerField(default=0)
     update_at = models.DateTimeField(default=timezone.now)
     content_poster = models.ImageField(upload_to='posters/')
-    is_draft = models.BooleanField(default=False)
+    is_draft = models.BooleanField()
 
     def __str__(self): 
         return self.title
+    def save(self, *args, **kwargs):
+        # '..' 문자열이 포함된 content 필드를 변경
+        self.content = self.content.replace('"..', '"')
+        super().save(*args, **kwargs)
