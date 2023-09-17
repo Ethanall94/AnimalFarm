@@ -1,5 +1,5 @@
 * {
-    --nav-height: 105px;
+    --nav-height: 104px;
 }
 
 #nav {
@@ -8,6 +8,7 @@
     z-index: 1;
 
     width: 100%;
+    top: 0;
     height: var(--nav-height);
     position: fixed;
     
@@ -24,10 +25,7 @@
 .logo img {
     height: 80px;
     vertical-align: middle;
-}
-
-.logo_img {
-    content: url("127.0.0.1:8000/static/img/blackLogo.svg");
+    content: url("../img/blackLogo.svg");
 }
 
 .logo a {
@@ -132,13 +130,16 @@ footer span {
 
 /* 반응형 */
 @media screen and (max-width: 768px) {
-    #nav {
+    * {
         --nav-height: 45px;
+    }
+
+    #nav {
         width: 100%;
         height: var(--nav-height);
     }
 
-    .logo img {
+    .logo_img {
         height: 35px;   
         left: 0; 
     }
@@ -151,5 +152,4 @@ footer span {
     .navBtn {
         display: none;
     }
-
 }
