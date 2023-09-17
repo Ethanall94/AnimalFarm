@@ -34,14 +34,22 @@ def logout_user(request):
 def post_list(request, topic=None):
     try:
         if topic:
-                posts = Post.objects.all().filter(topic=topic).order_by('-views')
+                main = Post.objects.all().filter(topic=topic).order_by('-views').first()
+                posts = Post.objects.all().filter(topic=topic).exclude(id=main.id).order_by('-views')
         else:
-            posts = Post.objects.all().order_by('-views')
+            main = Post.objects.all().order_by('-views').first()
+            posts = Post.objects.all().exclude(id=main.id).order_by('-views')
 
     except:
+        main = None
         posts = None
 
-    return render(request, 'post-list.html', {'posts' : posts})
+    content = {
+        'main': main,
+        'posts': posts,
+    }
+
+    return render(request, 'post-list.html', content)
 
 
 # 글 생성, 수정
