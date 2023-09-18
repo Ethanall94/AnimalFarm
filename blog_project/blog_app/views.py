@@ -75,7 +75,7 @@ def write(request, post_id=None):
                 post.delete() 
                 return redirect('board')
 
-            if not form.clean_data.get('topic'):
+            if not form.cleaned_data.get('topic'):
                 post.topic = '전체'
 
             if 'temporary' in request.POST:

@@ -29,7 +29,8 @@ class PostForm(forms.ModelForm):
         required = False)
     
     temporary = forms.BooleanField(widget=forms.HiddenInput(), required=False)
-    
+    content_poster = forms.ImageField(required=False)
+
     class Meta:
         model = Post
         fields = ['title', 'content', 'topic', 'content_poster']
