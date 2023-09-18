@@ -15,6 +15,7 @@ urlpatterns = [
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
     path('board/',views.board, name='board'),
+    path('board/<int:post_id>/',views.board, name='board_id'),
     path('board/<str:topic>/', views.board, name='board-topic'),
     path('api/', include(router.urls)),
     path('autocomplete/', views.autocomplete, name='autocomplete'),

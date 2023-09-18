@@ -52,6 +52,11 @@
     flex-direction: column;
 }
 
+.subRectReccomend a {
+    text-decoration: none;
+    color: black;
+}
+
 .rectTop {
     display: flex;
     justify-content: space-between;
