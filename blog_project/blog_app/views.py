@@ -50,7 +50,7 @@ def post_list(request, topic=None):
     content = {
         'main': main,
         'posts': posts,
-        'Animal': ["media/Aniamls/quokka.jpg", "media/Aniamls/puppy.jpg", "media/Aniamls/lesser.jpg", "media/Aniamls/fox.jpg"]
+        'Animal': ["/media/Aniamls/quokka.jpg", "/media/Aniamls/puppy.jpg", "/media/Aniamls/lesser.jpg", "/media/Aniamls/fox.jpg"]
     }
 
     return render(request, 'post-list.html', content)
@@ -138,6 +138,7 @@ def board(request, topic=None, post_id=None):
         'post_id': post_id,
         'prev_post': prev_post,
         'next_post': next_post,
+        'Animal': ["/media/Aniamls/quokka.jpg", "/media/Aniamls/puppy.jpg", "/media/Aniamls/lesser.jpg", "/media/Aniamls/fox.jpg"]
     }
 
     return render(request, 'board.html', context)
