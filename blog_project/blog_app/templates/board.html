@@ -70,14 +70,14 @@
                                 {{ recommended_post.title }}
                             </div>
                         </div>
-                        <div class="subRectReccomend">
+                        {% comment %} <div class="subRectReccomend">
                             <div id="reccomendPic">
                                 {{ recommended_post.content_poster }}
                             </div>
                             <div id="reccomendTitle">
                                 {{ recommended_post.title }}
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                     {% endfor %}
                 </div>
@@ -85,10 +85,31 @@
             <div class="bottom">
                 <div class="rectangleEdit">
                     <div class="rectEditLeft">
-                        <div id="rectAmend">수정하기</div>
-                        <div id="rectDelete">삭제하기</div>
+                        <span id="rectAmend">
+                            <a href="{% url 'edit' main_post.id %}">
+                                <button>수정하기</button>
+                            </a>
+                        </span>
+                        <div class="rectDelete">
+                            <button class="delete" id="delete">삭제하기</button>
+                        </div>
+                    
+                        <form method="post">
+                            {% csrf_token %}
+                            <div id="deleteModal" class="modal">
+                                <div class="modalContent">
+                                    <p>정말로 삭제하시겠습니까?</p>
+                                    <div>
+                                        <button id="confirmDeleteBtn" name="confirmDeleteBtn">네</button>
+                                        <button id="cancelDeleteBtn">아니요</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div id="rectShare">공유하기</div>
+                    <div class="rectShare">
+                        <button class="shareButton">공유하기</button>
+                    </div>
                 </div>
                 <div class="previousPost">
                     <div class="previous">이전글</div>
@@ -111,4 +132,39 @@
         <p>Made with <span>Django</span></p>
     </footer>
 </body>
+<script>
+// "삭제하기" 버튼 클릭 시 모달
+    document.getElementById('delete').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('deleteModal').style.display = 'block';
+    });
+    // "네"
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        alert('삭제되었습니다.');
+        document.getElementById('deleteModal').style.display = 'none';
+    });
+    // "아니요"
+    document.getElementById('cancelDeleteBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('deleteModal').style.display = 'none';
+    });
+
+
+// 공유하기 버튼 클릭 시
+    document.querySelector('.shareButton').addEventListener('click', function() {
+    let postUrl = window.location.href;
+    
+    // 클립보드에 복사
+    let tempInput = document.createElement("input");
+    document.body.appendChild(tempInput);
+    tempInput.value = postUrl;
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    
+    // 알림 표시
+    alert('포스트 링크가 클립보드에 복사되었습니다');
+  });
+</script>
 </html>

@@ -7,14 +7,11 @@ from rest_framework import viewsets
 from .serializers import PostSerializer
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+import openai
+from django.conf import settings
+# from bs4 import BeautifulSoup
 
-# Create your views here.
-
-def board_client(request):
-    return render(request, 'board-client.html')
-def board_admin(request):
-    return render(request, 'board-admin.html')
-
+# login
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -22,22 +19,41 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirect to a success page.
             return redirect('/')
         else:
-            # Return an 'invalid login' error message.
             messages.success(request, "Oops! Try Again...")
             return redirect('login')
 
     else:
         return render(request, 'login.html')
 
+# logout
 def logout_user(request):
     logout(request)
     messages.success(request, "Hey, you logged out! Please Try Again...")
     return redirect('/')
 
-# 글 생성, 수정
+# post_list
+def post_list(request, topic=None):
+    try:
+        if topic:
+                main = Post.objects.all().filter(topic=topic).order_by('-views').first()
+                posts = Post.objects.all().filter(topic=topic).exclude(id=main.id).order_by('-views')
+        else:
+            main = Post.objects.all().order_by('-views').first()
+            posts = Post.objects.all().exclude(id=main.id).order_by('-views')
+
+    except:
+        main = None
+        posts = None
+
+    content = {
+        'main': main,
+        'posts': posts,
+    }
+
+    return render(request, 'post-list.html', content)
+
 # @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)
 def write(request, post_id=None):
     if post_id:
@@ -51,12 +67,15 @@ def write(request, post_id=None):
         # 글 새로 작성
         post = None
         form = PostForm(request.POST, request.FILES)
-
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit=False)
+            # 게시물 삭제
+            if 'deleteButton' in request.POST:
+                post.delete() 
+                return redirect('board')
 
-            if not form.cleaned_data.get('topic'):
+            if not form.clean_data.get('topic'):
                 post.topic = '전체'
 
             if 'temporary' in request.POST:
@@ -72,6 +91,7 @@ def write(request, post_id=None):
     context = {'form': form, 'drafts': drafts}
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
 
+
 # 보더
 def board(request, topic=None):
     try:
@@ -84,9 +104,18 @@ def board(request, topic=None):
     except:
         main_post = None
         recommended_posts = None
+
+    post_id = main_post.id if main_post else None
+    if request.method == "POST":
+        if 'confirmDeleteBtn' in request.POST:
+            if main_post:
+                main_post.delete()
+                return redirect('board')
+
     context = {
         'main_post': main_post,
         'recommended_posts': recommended_posts,
+        'post_id': post_id,
     }
 
     return render(request, 'board.html', context)
