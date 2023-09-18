@@ -35,7 +35,11 @@
                         </div>
                     </a>
                     <div class="coverImg">
+                        {% if not main.content_poster %}
+                        <img src="{{ Animal|random }}">
+                        {% else %}
                         <img src="{{ main.content_poster.urls }}" alt="">
+                        {% endif %}
                     </div>
                 </div>
             </div>
