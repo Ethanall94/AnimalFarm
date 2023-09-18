@@ -96,15 +96,22 @@ def write(request, post_id=None):
 
 
 # 보더
+def board(request, topic=None, post_id=None):
 
-def board(request, topic=None):
     try:
         if topic:
             main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
+            main_post.views += 1
+            main_post.save()
             recommended_posts = Post.objects.filter(topic=topic).exclude(id=main_post.id).order_by('-create_at')[:2]
+        elif post_id:
+            main_post = Post.objects.get(id = post_id)
+            main_post.views += 1
+            main_post.save()
+            recommended_posts = Post.objects.exclude(id = main_post.id).filter(topic = main_post.topic).order_by('-create_at')[:2]
         else:
-            main_post = Post.objects.order_by('-create_at').first()
-            recommended_posts = Post.objects.exclude(id=main_post.id).order_by('-create_at')[:2]
+            main_post = None
+            recommended_posts = None
     except:
         main_post = None
         recommended_posts = None
