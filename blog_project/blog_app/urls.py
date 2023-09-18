@@ -17,6 +17,7 @@ urlpatterns = [
     path('board_admin/',views.board_admin, name='board_admin'),
     path('board/',views.board, name='board'),
     path('board/<str:topic>/', views.board, name='board-topic'),
+    path('board/<str:topic>/<int:post_id>', views.board, name='board-topic-post_id'),
     path('api/', include(router.urls)),
     path('autocomplete/', views.autocomplete, name='autocomplete'),
     path('write/<int:post_id>/edit/', views.write, name='edit'),

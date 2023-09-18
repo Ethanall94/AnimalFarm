@@ -71,6 +71,11 @@ def write(request, post_id=None):
         if form.is_valid():
             post = form.save(commit=False)
 
+            # 게시물 삭제
+            if 'deleteButton' in request.POST:
+                post.delete() 
+                return redirect('board') 
+            
             if not form.cleaned_data.get('topic'):
                 post.topic = '전체'
 
