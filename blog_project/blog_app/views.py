@@ -93,7 +93,7 @@ def write(request, post_id=None):
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
 
 # 보더
-def board(request, topic=None, post_id):
+def board(request, topic=None, post_id=None):
     
     post = get_object_or_404(Post, id=post_id)
 

@@ -105,20 +105,37 @@
                         <button class="shareButton">공유하기</button>
                     </div>
                 </div>
+                {% if previous_post %}
                 <div class="previousPost">
                     <div class="previous">이전글</div>
                     <div class="postDetail">
-                        <div id="prePostTitle"></div>
-                        <div id="prePostDate"></div>
+                        <div id="prePostTitle">
+                            <a href="{% url 'board' previous.id %}">
+                                {{ previous.title }}
+                            </a>
+                        </div>
+                        <div id="prePostDate">
+                            {{ previous.create_at }}
+                        </div>
                     </div>
                 </div>
+                {% endif %}
+
+                {% if next_post %}
                 <div class="nextPost">
                     <div class="next">다음글</div>
                     <div class="postDetail">
-                        <div id="nextPostTitle"></div>
-                        <div id="nextPostDate"></div>
+                        <div id="nextPostTitle">
+                            <a href="{% url 'board' next_post.id %}">
+                                {{ next_post.title }}
+                            </a>
+                        </div>
+                        <div id="nextPostDate">
+                            {{ next_post.create_at }}
+                        </div>
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
