@@ -96,10 +96,18 @@
                     <div class="previous">이전글</div>
                     <div class="postDetail">
                         <div id="prePostTitle">
-                            <a href="">
+                            {% if prev_post %}
+                            <a href="{% url 'board_id' prev_post.id %}">
+                                {{ prev_post.title }}
                             </a>
+                            {% else %}
+                            없음
+                            {% endif %}
                         </div>
                         <div id="prePostDate">
+                            {% if prev_post %}
+                                {{ prev_post.create_at }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -108,10 +116,18 @@
                     <div class="next">다음글</div>
                     <div class="postDetail">
                         <div id="nextPostTitle">
-                            <a href="">
+                            {% if next_post %}
+                            <a href="{% url 'board_id' next_post.id %}">
+                                {{ next_post.title }}
                             </a>
+                            {% else %}
+                            없음
+                            {% endif %}
                         </div>
                         <div id="nextPostDate">
+                            {% if next_post %}
+                                {{ next_post.create_at }}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

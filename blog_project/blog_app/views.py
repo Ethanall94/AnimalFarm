@@ -116,6 +116,15 @@ def board(request, topic=None, post_id=None):
         main_post = None
         recommended_posts = None
 
+    # 이전 글 및 다음 글을 가져오기 위한 로직
+    prev_post = None
+    next_post = None
+
+    if main_post:
+        prev_post = Post.objects.filter(create_at__lt=main_post.create_at).order_by('-create_at').first()
+        next_post = Post.objects.filter(create_at__gt=main_post.create_at).order_by('create_at').first()
+
+
     post_id = main_post.id if main_post else None
     if request.method == "POST":
         if 'confirmDeleteBtn' in request.POST:
@@ -127,6 +136,8 @@ def board(request, topic=None, post_id=None):
         'main_post': main_post,
         'recommended_posts': recommended_posts,
         'post_id': post_id,
+        'prev_post': prev_post,
+        'next_post': next_post
     }
 
     return render(request, 'board.html', context)
