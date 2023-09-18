@@ -13,28 +13,7 @@
     <title>Write</title>
 </head>
 <body>
-    <nav id="nav">
-        <div class="logo">
-            <img class="logo_img"/>
-            <a href="/">MYLOG</a>
-        </div>
-        <div class="navBtn">
-            <ul>
-                <li><a href="{% url 'post-topic' topic='일상' %}">일상</a></li>
-                <li><a href="{% url 'post-topic' topic='요리' %}">요리</a></li>
-                <li><a href="{% url 'post-topic' topic='여행' %}">여행</a></li>
-                <li><a href="{% url 'post-topic' topic='영화' %}">영화</a></li>
-                <li><a href="{% url 'post-topic' topic='IT' %}">IT</a></li>
-            {% if user.is_authenticated %}
-                <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-            <a href="{% url 'write' %}"><button>Just Write!</button></a>
-            {% else %}
-                </ul>
-                <a href="{% url 'login' %}"><button>Login</button></a>
-            {% endif %}
-        </div>
-    </nav>
+    {% include 'nav_white.html' %}
     <!-- Content -->
     <section class="content">
         <form action="" method="POST" class="writeContent" enctype="multipart/form-data">
