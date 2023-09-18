@@ -93,7 +93,23 @@ def write(request, post_id=None):
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
 
 # 보더
-def board(request, topic=None):
+def board(request, topic=None, post_id):
+    
+    post = get_object_or_404(Post, id=post_id)
+
+    if request.method == 'POST':
+        
+        #  요청에 삭제가 있을 경우
+            if 'deleteButton' in request.POST:
+                post.delete() 
+                return redirect('board') 
+            
+    # 이전/다음 게시물 가져옴
+
+    previous_post = Post.objects.filter(id__lt=post.id, is_draft=True).order_by('-id').first()
+    next_post = Post.objects.filter(id__gt=post.id, is_draft=True).order_by('id').first()
+
+    # 게시물들 중 최신 글 가져옴
     try:
         if topic:
             main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
@@ -107,6 +123,8 @@ def board(request, topic=None):
     context = {
         'main_post': main_post,
         'recommended_posts': recommended_posts,
+        'previous_post': previous_post,
+        'next_post': next_post,
     }
 
     return render(request, 'board.html', context)
