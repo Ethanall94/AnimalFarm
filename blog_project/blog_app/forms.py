@@ -33,18 +33,3 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'topic', 'content_poster']
-
-    def clean(self):
-        clean_data = super().clean()
-        title = clean_data.get('title','')
-        content = clean_data.get('content', '')
-        topic = clean_data.get('topic', '')
-
-        if title == '':
-            self.add_error('title', '글 제목을 입력하세요')
-        elif content == "":
-            self.add_error('content', '글 내용을 입력하세요')
-        elif topic == '':
-            self.add_error('content', 'topic을 선택하세요')
-
-        
