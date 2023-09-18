@@ -129,7 +129,7 @@ footer span {
 /* 반응형 */
 @media screen and (max-width: 768px) {
     * {
-        --nav-height: 45px;
+        --nav-height: 90px;
     }
 
     #nav {
@@ -139,12 +139,12 @@ footer span {
 
     .logo_img {
         height: 35px;   
-        left: 0; 
+        left: 0;
     }
     
     .logo a {
-        font-size: 14px;
-        left: 25%;
+        font-size: 28px;
+        left: 28%;
     }
 
     .navBtn {

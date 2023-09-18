@@ -1,14 +1,13 @@
 * {
-    --nav-height: 104px;
+    --nav-height: 105px;
 }
 
 #nav {
     background-color: #F9F8F4;
 
-    z-index: 1;
+    z-index: 1000;
 
     width: 100%;
-    top: 0;
     height: var(--nav-height);
     position: fixed;
     
@@ -131,7 +130,7 @@ footer span {
 /* 반응형 */
 @media screen and (max-width: 768px) {
     * {
-        --nav-height: 45px;
+        --nav-height: 90px;
     }
 
     #nav {
@@ -145,8 +144,8 @@ footer span {
     }
     
     .logo a {
-        font-size: 14px;
-        left: 25%;
+        font-size: 28px;
+        left: 28%;
     }
 
     .navBtn {
