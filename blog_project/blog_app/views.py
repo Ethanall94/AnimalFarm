@@ -7,6 +7,9 @@ from rest_framework import viewsets
 from .serializers import PostSerializer
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+import openai
+from django.conf import settings
+# from bs4 import BeautifulSoup
 
 # login
 def login_user(request):
@@ -52,8 +55,6 @@ def post_list(request, topic=None):
 
     return render(request, 'post-list.html', content)
 
-
-# 글 생성, 수정
 # @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)
 def write(request, post_id=None):
     if post_id:
@@ -67,17 +68,15 @@ def write(request, post_id=None):
         # 글 새로 작성
         post = None
         form = PostForm(request.POST, request.FILES)
-
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit=False)
-
             # 게시물 삭제
             if 'deleteButton' in request.POST:
                 post.delete() 
-                return redirect('board') 
-            
-            if not form.cleaned_data.get('topic'):
+                return redirect('board')
+
+            if not form.clean_data.get('topic'):
                 post.topic = '전체'
 
             if 'temporary' in request.POST:
@@ -93,23 +92,10 @@ def write(request, post_id=None):
     context = {'form': form, 'drafts': drafts}
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
 
+
 # 보더
-def board(request, topic=None, post_id=None):
+def board(request, topic):
     
-    post = get_object_or_404(Post, id=post_id)
-
-    if request.method == 'POST':
-        
-        #  요청에 삭제가 있을 경우
-            if 'deleteButton' in request.POST:
-                post.delete() 
-                return redirect('board') 
-            
-    # 이전/다음 게시물 가져옴
-
-    previous_post = Post.objects.filter(id__lt=post.id, is_draft=True).order_by('-id').first()
-    next_post = Post.objects.filter(id__gt=post.id, is_draft=True).order_by('id').first()
-
     # 게시물들 중 최신 글 가져옴
     try:
         if topic:
@@ -121,11 +107,18 @@ def board(request, topic=None, post_id=None):
     except:
         main_post = None
         recommended_posts = None
+
+    post_id = main_post.id if main_post else None
+    if request.method == "POST":
+        if 'confirmDeleteBtn' in request.POST:
+            if main_post:
+                main_post.delete()
+                return redirect('board')
+
     context = {
         'main_post': main_post,
         'recommended_posts': recommended_posts,
-        'previous_post': previous_post,
-        'next_post': next_post,
+        'post_id': post_id,
     }
 
     return render(request, 'board.html', context)
