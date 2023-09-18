@@ -84,7 +84,6 @@
             </div>
             <div class="bottom">
                 <div class="rectangleEdit">
-                    {% if user.is_authenticated %}
                     <div class="rectEditLeft">
                         <span id="rectAmend">
                             <a href="">
@@ -92,50 +91,38 @@
                             </a>
                         </span>
                         <span id="rectDelete">
-                            <form method="POST" action="{% url 'board-topic-post_id' post.id %}">
-                                {% csrf_token %}
                                 <a href="">
                                     <button type="submit" class="deleteButton">삭제하기</button>
                                 </a>
-                            </form>
                         </span>
                     </div>
-                    {% endif %}
                     <div class="rectShare">
                         <button class="shareButton">공유하기</button>
                     </div>
                 </div>
-                {% if previous_post %}
                 <div class="previousPost">
                     <div class="previous">이전글</div>
                     <div class="postDetail">
                         <div id="prePostTitle">
-                            <a href="{% url 'board' previous.id %}">
-                                {{ previous.title }}
+                            <a href="">
                             </a>
                         </div>
                         <div id="prePostDate">
-                            {{ previous.create_at }}
                         </div>
                     </div>
                 </div>
-                {% endif %}
 
-                {% if next_post %}
                 <div class="nextPost">
                     <div class="next">다음글</div>
                     <div class="postDetail">
                         <div id="nextPostTitle">
-                            <a href="{% url 'board' next_post.id %}">
-                                {{ next_post.title }}
+                            <a href="">
                             </a>
                         </div>
                         <div id="nextPostDate">
-                            {{ next_post.create_at }}
                         </div>
                     </div>
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>
