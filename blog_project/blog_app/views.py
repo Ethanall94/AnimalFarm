@@ -7,7 +7,7 @@ from rest_framework import viewsets
 from .serializers import PostSerializer
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-import openai
+# import openai
 from django.conf import settings
 # from bs4 import BeautifulSoup
 
@@ -56,6 +56,7 @@ def post_list(request, topic=None):
     return render(request, 'post-list.html', content)
 
 # @login_required  #로그인 시 작성할 수 있도록 설정(로그인 설정 후 활성화)
+
 def write(request, post_id=None):
     if post_id:
         # 글 수정
@@ -76,7 +77,7 @@ def write(request, post_id=None):
                 post.delete() 
                 return redirect('board')
 
-            if not form.clean_data.get('topic'):
+            if not form.cleaned_data.get('topic'):
                 post.topic = '전체'
 
             if 'temporary' in request.POST:
@@ -93,10 +94,10 @@ def write(request, post_id=None):
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
 
 
+
 # 보더
-def board(request, topic):
-    
-    # 게시물들 중 최신 글 가져옴
+
+def board(request, topic=None):
     try:
         if topic:
             main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
@@ -122,6 +123,7 @@ def board(request, topic):
     }
 
     return render(request, 'board.html', context)
+
 
 class PostViewset(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-views')
