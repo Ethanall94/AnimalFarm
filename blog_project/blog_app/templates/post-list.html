@@ -52,7 +52,7 @@
                                 {% if not post.content_poster %}
                                 <img src="{{ Animal|random }}">
                                 {% else %}
-                                <img src="media/{{ post.content_poster }}" alt="">
+                                <img src="{{ post.content_poster.url }}" alt="">
                                 {% endif %}
                             </a>
                         </div>
