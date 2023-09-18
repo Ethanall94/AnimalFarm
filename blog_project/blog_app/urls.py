@@ -14,7 +14,6 @@ urlpatterns = [
     path('write/', views.write, name='write'),
     path('login/', views.login_user, name='login'),
     path('logout/', views.logout_user, name='logout'),
-    path('board_admin/',views.board_admin, name='board_admin'),
     path('board/',views.board, name='board'),
     path('board/<str:topic>/', views.board, name='board-topic'),
     path('board/<str:topic>/<int:post_id>', views.board, name='board-topic-post_id'),
