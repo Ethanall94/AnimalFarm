@@ -20,7 +20,7 @@ class PostForm(forms.ModelForm):
         ('요리', '요리'),
         ('여행', '여행'),
         ('영화', '영화'),
-        ('IT / 전자기기', 'IT/전자기기'),]
+        ('IT', 'IT'),]
 
     topic = forms.ChoiceField(
         choices = topic_choices,
