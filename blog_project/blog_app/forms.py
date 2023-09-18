@@ -13,7 +13,7 @@ class PostForm(forms.ModelForm):
                 label= '',required=True)
     
     content = forms.CharField(widget=SummernoteWidget(),
-                            label= '',required=True)
+                            label= '',required=False)
     
     topic_choices = [
         ('일상', '일상'),
@@ -26,7 +26,9 @@ class PostForm(forms.ModelForm):
         choices = topic_choices,
         widget = forms.RadioSelect,
         label = 'TOPIC',
-        required = True)
+        required = False)
+    
+    temporary = forms.BooleanField(widget=forms.HiddenInput(), required=False)
     
     class Meta:
         model = Post

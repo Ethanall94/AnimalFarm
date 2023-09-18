@@ -193,14 +193,17 @@
     border-radius: 2px;
     border: 1px solid #E1E0DB;
     background-color: #E1E0DB;
+    cursor: pointer;
+
 }
 
-#rectDelete button {
+#delete {
     padding: 3px 8px;
     border-radius: 2px;
     border: 1px solid black;
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 .rectShare button {
@@ -208,6 +211,36 @@
     border-radius: 2px;
     border: 1px solid #D9D9D9;
     background-color: inherit;
+    cursor: pointer;
+}
+
+/* 9.18 삭제버튼 모달 추가 */
+#deleteModal {
+    display: none;
+    z-index: 1;
+    border: solid 1px #D9D9D9;
+    border-radius: 1rem;
+    position: absolute;
+
+}
+
+.modalContent {
+    margin: 10px;
+}
+
+.modalContent div {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+#confirmDeleteBtn,
+#cancelDeleteBtn {
+    border: solid 1px #CAC8C5;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* 9.14 서브 content css 추가 */
