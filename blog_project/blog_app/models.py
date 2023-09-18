@@ -8,10 +8,10 @@ class Post(models.Model):
     content = models.TextField()
     create_at = models.DateTimeField(default=timezone.now)
     author_id = models.CharField(max_length=50)
-    topic = models.CharField(max_length=50)
+    topic = models.CharField(max_length=50, default='전체')
     views = models.PositiveIntegerField(default=0)
     update_at = models.DateTimeField(default=timezone.now)
-    content_poster = models.ImageField(upload_to='posters/')
+    content_poster = models.ImageField(upload_to='posters/', null=True)
     is_draft = models.BooleanField()
 
     def __str__(self): 
