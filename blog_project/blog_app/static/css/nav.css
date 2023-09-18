@@ -127,7 +127,7 @@ footer span {
 }
 
 /* 반응형 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 810px) {
     * {
         --nav-height: 90px;
     }
