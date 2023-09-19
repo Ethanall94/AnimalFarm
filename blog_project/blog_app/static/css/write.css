@@ -15,6 +15,10 @@ form {
     display: grid;
 }
 
+.rightPanel img {
+    vertical-align: middle;
+}
+
 .aiCompletion,
 .topics,
 .status,
@@ -29,6 +33,7 @@ form {
     font-size: 18px;
     font-weight: bold;
     padding: 30px 0;
+    margin-top: 0;
     cursor: pointer;
 }
 
@@ -65,11 +70,13 @@ form {
 
 #temporary {
     background-color: #F9F8F4;
+    padding: 4px 17px;
 }
 
 #postBtn {
     background-color: black;
     color: white;
+    padding: 4px 17px;
 }
 
 /* 9.16 임시저장 목록 신지수 */
@@ -103,4 +110,20 @@ form {
     text-decoration: none;
     color: black;
     margin: 10px;
+}
+
+#loading-animation img {
+    width: 24px;
+    height: 24px;
+}
+
+.statusBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#id_title::placeholder {
+    padding: 10px;
 }

@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
         widget=forms.TextInput
             (attrs={
                 'placeholder':' 제목',
-                'style': 'width: 99%; height: 30px; border: solid 1px #CAC8C5; border-radius:3px;'}),
+                'style': 'width: -webkit-fill-available; height: 30px; border: solid 1px #CAC8C5; margin-bottom: 18px; border-radius:3px; outline: none;'}),
                 label= '',required=True)
     
     content = forms.CharField(widget=SummernoteWidget(),
