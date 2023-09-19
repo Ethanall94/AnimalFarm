@@ -18,27 +18,37 @@
         <div class="totalRectangle">
             <div class="top">
                 <div class="mainRectangle">
-                    <div class="rectTop">
-                        {% if main_post.is_draft %}
-                        <div>🔒임시 저장된 글입니다.</div>
-                        {% endif %}
-                        <div id="dateCreate">
-                            {{ main_post.create_at|date:"Y.m.d" }}
+                    <div class="rectangleInner">
+                        <div class="rectTop">
+                            {% if main_post.is_draft %}
+                            <div>🔒임시 저장된 글입니다.</div>
+                            {% endif %}
+                            <div id="dateCreate">
+                                {{ main_post.create_at|date:"Y.m.d" }}
+                            </div>
+                            <div id="rectTitle">
+                                {{ main_post.title }}
+                            </div>
+                            <div id="rectUser">
+                                {% if not main_post.author_id %}
+                                by 이름 없는 사용자
+                                {% else %}
+                                by {{ main_post.author_id }}
+                                {% endif %}
+                            </div>
+                            <div id="rectTopic">
+                                {{ main_post.topic }}
+                            </div>
                         </div>
-                        <div id="rectTitle">
-                            {{ main_post.title }}
-                        </div>
-                        <div id="rectUser">
-                            by {{ main_post.author_id }}
-                        </div>
-                        <div id="rectTopic">
-                            {{ main_post.topic }}
-                            
+                        <div class="rectMain">
+                            {{ main_post.content|safe }}
                         </div>
                     </div>
-                    <div class="rectMain">
-                        
-                        {{ main_post.content|safe }}
+                    <div class="views">
+                        <div class="viewsInfo">
+                            <img src="{% static 'img/eyes.png' %}" alt="">
+                            {{ main_post.views }}
+                        </div>
                     </div>
                 </div>
                 <div class="subRectangle">
@@ -72,19 +82,20 @@
                             </a>
                         </span>
                         <button id="deleteBtn">삭제하기</button>
-                        <form method="POST" action="">
-                            {% csrf_token %}
+                        
                         <div id="deleteModal" class="modal">
                             <div class="modalContent">
-                                <p>정말로 삭제하시겠습니까?</p>
-                                <div>
+                                <span id="closeModal" class="close">&times;</span>
+                                <p>삭제하시겠습니까?</p>
+                                <p>삭제된 글은 복구할 수 없습니다.</p>
+                                <form method="POST" action="">
+                                    {% csrf_token %}
                                     <input type="hidden" name="delete" value="true">
-                                    <button type="submit" class="delete">네</button>
-                                    <button id="cancelDeleteBtn">아니요</button>
-                                </div>
+                                    <button type="submit" class="delete">삭제하기</button>
+                                </form>
                             </div>
                         </div>
-                      </form>
+                        <div class="modal-overlay"></div>
                     </div>
                     <div class="rectShare">
                         <button class="shareButton">공유하기</button>
@@ -138,22 +149,17 @@
 </body>
 <script>
 // "삭제하기" 버튼 클릭 시 모달
-    document.getElementById('delete').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('deleteModal').style.display = 'block';
-    });
-    // "네"
-    document.getElementById('confirmDeleteBtn').addEventListener('click', function(event) {
-        event.preventDefault();
-        alert('삭제되었습니다.');
+    document.getElementById('closeModal').addEventListener('click', function() {
         document.getElementById('deleteModal').style.display = 'none';
-    });
-    // "아니요"
-    document.getElementById('cancelDeleteBtn').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('deleteModal').style.display = 'none';
+        document.querySelector('.modal-overlay').style.display = 'none';
     });
 
+    // "삭제하기" 버튼 클릭 시 모달 열기
+    document.getElementById('deleteBtn').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('deleteModal').style.display = 'block';
+        document.querySelector('.modal-overlay').style.display = 'block';
+    });
 
 // 공유하기 버튼 클릭 시
     document.querySelector('.shareButton').addEventListener('click', function() {

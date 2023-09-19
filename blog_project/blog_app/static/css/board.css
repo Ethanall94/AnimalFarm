@@ -42,6 +42,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 2%;
+    justify-content: space-between;
 }
 
 .subRectangle {
@@ -164,7 +165,7 @@
 }
 
 .rectMain p img {
-    min-width: 100%;
+    max-width: 100%;
     align-items: center;
     margin: 10px 0;
 }
@@ -216,31 +217,67 @@
 /* 9.18 삭제버튼 모달 추가 */
 #deleteModal {
     display: none;
-    z-index: 1;
-    border: solid 1px #D9D9D9;
-    border-radius: 1rem;
-    position: absolute;
-    background-color: #D9D9D9;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 1000;
+}
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+.modalContent {
+    border: solid 28px whitesmoke;
+    background-color: whitesmoke;
 }
 
 .modalContent {
     margin: 10px;
-}
-
-.modalContent div {
+    position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 10px;
-    margin-top: 5px;
+    align-items: center;
 }
 
-#confirmDeleteBtn,
-#cancelDeleteBtn {
-    border: solid 1px #CAC8C5;
-    border-radius: 3px;
-    text-decoration: none;
+.close {
+    position: absolute;
+    bottom: 90%;
+    left: 100%;
+    font-size: 20px;
     cursor: pointer;
+    margin: 8px;
+}
+
+.close:hover {
+    color: red;
+}
+
+.delete {
+    cursor: pointer;
+    text-align: center;
+    background: rgb(26, 26, 26);
+    color: whitesmoke;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+
 }
 
 /* 9.14 서브 content css 추가 */
@@ -294,4 +331,21 @@
     color: #7c7a7a;
     text-decoration: none;
     font-size: 17px;
+
+}
+
+/* views info 추가 */
+.viewsInfo {
+    float: right;
+    border: 1px solid #CAC8C5;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin: 10px;
+    color: #7c7a7a;
+}
+
+.views img {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
 }

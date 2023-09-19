@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 import openai
 from django.conf import settings
-# from bs4 import BeautifulSoup
 
 # login
 def login_user(request):
