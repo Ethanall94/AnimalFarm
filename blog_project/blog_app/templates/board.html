@@ -23,17 +23,13 @@
                         <div>🔒임시 저장된 글입니다.</div>
                         {% endif %}
                         <div id="dateCreate">
-                            {{ main_post.create_at }}
+                            {{ main_post.create_at|date:"Y.m.d" }}
                         </div>
                         <div id="rectTitle">
                             {{ main_post.title }}
                         </div>
                         <div id="rectUser">
-                            {% if not main_post.author_id %}
-                            by 이름 없는 사용자
-                            {% else %}
                             by {{ main_post.author_id }}
-                            {% endif %}
                         </div>
                         <div id="rectTopic">
                             {{ main_post.topic }}
@@ -114,7 +110,7 @@
                         </div>
                         <div id="prePostDate">
                             {% if prev_post %}
-                                {{ prev_post.create_at }}
+                                {{ prev_post.create_at|date:"Y.m.d" }}
                             {% endif %}
                         </div>
                     </div>
@@ -134,7 +130,7 @@
                         </div>
                         <div id="nextPostDate">
                             {% if next_post %}
-                                {{ next_post.create_at }}
+                                {{ next_post.create_at|date:"Y.m.d" }}
                             {% endif %}
                         </div>
                     </div>

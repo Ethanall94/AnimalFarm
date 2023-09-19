@@ -169,12 +169,6 @@
     margin: 10px 0;
 }
 
-@media(max-width: 1382px) {
-    .rectMain p img {
-        max-width: 80%;
-    }
-}
-
 .subRectTitle {
     font-size: 30px;
     font-weight: bold;
@@ -283,18 +277,24 @@
     margin-right: 500px;
 }
 
-#prePostTitle>a:hover, #prePostTitle>a:link, #prePostTitle>a:active, #prePostTitle>a:visited {
+#prePostTitle>a:hover,
+#prePostTitle>a:link,
+#prePostTitle>a:active,
+#prePostTitle>a:visited {
     color: #7c7a7a;
     text-decoration: none;
     font-size: 17px;
 }
 
-#nextPostTitle>a:hover, #nextPostTitle>a:link, #nextPostTitle>a:active, #nextPostTitle>a:visited {
+#nextPostTitle>a:hover,
+#nextPostTitle>a:link,
+#nextPostTitle>a:active,
+#nextPostTitle>a:visited {
     color: #7c7a7a;
     text-decoration: none;
     font-size: 17px;
-}
 
+}
 /* views info 추가 */
 .viewsInfo {
     float: right;
