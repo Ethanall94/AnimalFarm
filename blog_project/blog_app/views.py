@@ -7,7 +7,7 @@ from rest_framework import viewsets
 from .serializers import PostSerializer
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-# import openai
+import openai
 from django.conf import settings
 # from bs4 import BeautifulSoup
 
@@ -147,7 +147,7 @@ def autocomplete(request):
     if request.method == "POST":
 
         #제목 필드값 가져옴
-        prompt = request.POST.get('contentTitle')
+        prompt = request.POST.get('title')
         try:
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
