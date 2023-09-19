@@ -13,28 +13,7 @@
     <title>Write</title>
 </head>
 <body>
-    <nav id="nav">
-        <div class="logo">
-            <img class="logo_img"/>
-            <a href="/">MYLOG</a>
-        </div>
-        <div class="navBtn">
-            <ul>
-                <li><a href="{% url 'post-topic' topic='일상' %}">일상</a></li>
-                <li><a href="{% url 'post-topic' topic='요리' %}">요리</a></li>
-                <li><a href="{% url 'post-topic' topic='여행' %}">여행</a></li>
-                <li><a href="{% url 'post-topic' topic='영화' %}">영화</a></li>
-                <li><a href="{% url 'post-topic' topic='IT' %}">IT</a></li>
-            {% if user.is_authenticated %}
-                <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-            <a href="{% url 'write' %}"><button>Just Write!</button></a>
-            {% else %}
-                </ul>
-                <a href="{% url 'login' %}"><button>Login</button></a>
-            {% endif %}
-        </div>
-    </nav>
+    {% include 'nav_white.html' %}
     <!-- Content -->
     <section class="content">
         <form action="" method="POST" class="writeContent" enctype="multipart/form-data">
@@ -46,12 +25,13 @@
                 {{ form.content|safe }}
             </div>
             <div class="rightPanel">
-                <button class="aiCompletion">
+                <button type="button" id="aiAutocompleteButton" class="aiCompletion">
                     <img id="ai-img" src="{% static 'img/ai.svg' %}" alt="AI 아이콘" />
                     <div id="loading-animation" style="display: none;">
-                      <img src="{% static 'img/loading.gif' %}" alt="로딩 중" />
-                    </div>  
-                    AI 자동 완성</button>
+                        <img src="{% static 'img/loading.gif' %}" alt="로딩 중" />
+                    </div> 
+                    AI 글 자동완성
+                </button>
                 <div class="topics">
                     <div class="topicsTitle">{{ form.topic.label }}</div>
                     {% for topic_choice in form.topic_choices %}
@@ -96,6 +76,6 @@
     </footer>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
 <script src="{% static 'js/write.js' %}"></script>
 </html>
