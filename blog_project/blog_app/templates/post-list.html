@@ -29,7 +29,7 @@
                     <a href="{% url 'board_id' main.id %}" class="post-info-box-link">
                         <div class="coverBox">
                             <h3>{{ main.title|title }}</h3>
-                            <p>{{ main.content|safe|striptags|truncatechars_html:500 }}</p>
+                            <p>{{ main.content|safe|striptags|truncatechars_html:350 }}</p>
                             <button>READ MORE</button>
                         </div>
                     </a>
