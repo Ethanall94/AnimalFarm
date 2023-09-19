@@ -70,10 +70,6 @@ def write(request, post_id=None):
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit=False)
-            # 게시물 삭제
-            if 'deleteButton' in request.POST:
-                post.delete() 
-                return redirect('board')
 
             if not form.cleaned_data.get('topic'):
                 post.topic = '전체'
@@ -91,23 +87,39 @@ def write(request, post_id=None):
     context = {'form': form, 'drafts': drafts}
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
 
-
 # 보더
-def board(request, topic=None):
-    try:
-        if topic:
-            main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
-            recommended_posts = Post.objects.filter(topic=topic).exclude(id=main_post.id).order_by('-create_at')[:2]
-        else:
-            main_post = Post.objects.order_by('-create_at').first()
-            recommended_posts = Post.objects.exclude(id=main_post.id).order_by('-create_at')[:2]
-    except:
-        main_post = None
-        recommended_posts = None
+def board(request, topic=None, post_id=None):
+    if post_id and not topic:
+        main_post = Post.objects.get(id = post_id)
+        main_post.views += 1
+        main_post.save()
+        recommended_posts = Post.objects.exclude(id = main_post.id).filter(topic = main_post.topic, is_draft = False).order_by('-create_at')[:2]
+    else:
+        try:
+            if topic:
+                main_post = Post.objects.filter(topic=topic, is_draft = False).order_by('-create_at').first()
+                main_post.views += 1
+                main_post.save()
+                recommended_posts = Post.objects.filter(topic=topic, is_draft = False).exclude(id=main_post.id).order_by('-create_at')[:2]
+            else:
+                main_post = Post.objects.filter(is_draft = False).order_by('-create_at').first()
+                recommended_posts = Post.objects.filter(is_draft = False).exclude(id=main_post.id).order_by('-create_at')[:2]
+        except:
+            main_post = None
+            recommended_posts = None
+
+    # 이전 글 및 다음 글을 가져오기 위한 로직
+    prev_post = None
+    next_post = None
+
+    if main_post:
+        prev_post = Post.objects.filter(create_at__lt=main_post.create_at, is_draft = False).order_by('-create_at').first()
+        next_post = Post.objects.filter(create_at__gt=main_post.create_at, is_draft = False).order_by('create_at').first()
+
 
     post_id = main_post.id if main_post else None
     if request.method == "POST":
-        if 'confirmDeleteBtn' in request.POST:
+        if 'delete' in request.POST:
             if main_post:
                 main_post.delete()
                 return redirect('board')
@@ -116,6 +128,9 @@ def board(request, topic=None):
         'main_post': main_post,
         'recommended_posts': recommended_posts,
         'post_id': post_id,
+        'prev_post': prev_post,
+        'next_post': next_post,
+        'Animal': ["/media/Aniamls/quokka.jpg", "/media/Aniamls/puppy.jpg", "/media/Aniamls/lesser.jpg", "/media/Aniamls/fox.jpg"]
     }
 
     return render(request, 'board.html', context)
