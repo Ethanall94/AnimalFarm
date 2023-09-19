@@ -72,10 +72,6 @@ def write(request, post_id=None):
     if request.method == "POST":
         if form.is_valid():
             post = form.save(commit=False)
-            # 게시물 삭제
-            if 'deleteButton' in request.POST:
-                post.delete() 
-                return redirect('board')
 
             if not form.cleaned_data.get('topic'):
                 post.topic = '전체'
@@ -92,8 +88,6 @@ def write(request, post_id=None):
     drafts = Post.objects.filter(is_draft=True)
     context = {'form': form, 'drafts': drafts}
     return render(request, 'write.html' if not post_id or not post else 'edit.html', context)
-
-
 
 # 보더
 def board(request, topic=None, post_id=None):
@@ -127,7 +121,7 @@ def board(request, topic=None, post_id=None):
 
     post_id = main_post.id if main_post else None
     if request.method == "POST":
-        if 'confirmDeleteBtn' in request.POST:
+        if 'delete' in request.POST:
             if main_post:
                 main_post.delete()
                 return redirect('board')
