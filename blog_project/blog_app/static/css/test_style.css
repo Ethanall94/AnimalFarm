@@ -118,6 +118,10 @@ body{
     height: 160px;
     color: #1e1e1e;
     font-family: 'Pretendard', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 5px;
 }
 
 .feedImg {
