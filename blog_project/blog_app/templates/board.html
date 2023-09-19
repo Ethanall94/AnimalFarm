@@ -18,25 +18,31 @@
         <div class="totalRectangle">
             <div class="top">
                 <div class="mainRectangle">
-                    <div class="rectTop">
-                        {% if main_post.is_draft %}
-                        <div>🔒임시 저장된 글입니다.</div>
-                        {% endif %}
-                        <div id="dateCreate">
-                            {{ main_post.create_at|date:"Y.m.d" }}
+                    <div class="rectangleInner">
+                        <div class="rectTop">
+                            {% if main_post.is_draft %}
+                            <div>🔒임시 저장된 글입니다.</div>
+                            {% endif %}
+                            <div id="dateCreate">
+                                {{ main_post.create_at|date:"Y.m.d" }}
+                            </div>
+                            <div id="rectTitle">
+                                {{ main_post.title }}
+                            </div>
+                            <div id="rectUser">
+                                {% if not main_post.author_id %}
+                                by 이름 없는 사용자
+                                {% else %}
+                                by {{ main_post.author_id }}
+                                {% endif %}
+                            </div>
+                            <div id="rectTopic">
+                                {{ main_post.topic }}
+                            </div>
                         </div>
-                        <div id="rectTitle">
-                            {{ main_post.title }}
+                        <div class="rectMain">
+                            {{ main_post.content|safe }}
                         </div>
-                        <div id="rectUser">
-                            by {{ main_post.author_id }}
-                        </div>
-                        <div id="rectTopic">
-                            {{ main_post.topic }}
-                        </div>
-                    </div>
-                    <div class="rectMain">
-                        {{ main_post.content|safe }}
                     </div>
                     <div class="views">
                         <div class="viewsInfo">
