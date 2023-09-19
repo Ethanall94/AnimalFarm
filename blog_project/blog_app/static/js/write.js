@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let title = id_title.value;
 
         let csrf_token = getCookie('csrftoken');
-        console.log(csrf_token);
 
         fetch('/autocomplete/', {
             method: 'POST',
@@ -43,13 +42,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 let summer = iframe.contentWindow.document.querySelectorAll('.note-editable')[0];
 
                 data.message = data.message.replace(/\n/g, '<br>');
-                let temp = '';
                 let dList = data.message.split('\n');
-                console.log(dList);
+                let temp = '';
+
                 for (let text of dList) {
                     temp += `<p>${text}</p>`;
                 }
-                console.log(temp);
                 summer.innerHTML += temp;
             })
             .catch(error => {
