@@ -37,11 +37,11 @@ def logout_user(request):
 def post_list(request, topic=None):
     try:
         if topic:
-                main = Post.objects.all().filter(topic=topic).order_by('-views').first()
-                posts = Post.objects.all().filter(topic=topic).exclude(id=main.id).order_by('-views')
+                main = Post.objects.all().filter(topic=topic, is_draft = False).order_by('-views').first()
+                posts = Post.objects.all().filter(topic=topic, is_draft = False).exclude(id=main.id).order_by('-views')
         else:
-            main = Post.objects.all().order_by('-views').first()
-            posts = Post.objects.all().exclude(id=main.id).order_by('-views')
+            main = Post.objects.all().filter(is_draft = False).order_by('-views').first()
+            posts = Post.objects.all().filter(is_draft = False).exclude(id=main.id).order_by('-views')
 
     except:
         main = None
@@ -101,17 +101,17 @@ def board(request, topic=None, post_id=None):
         main_post = Post.objects.get(id = post_id)
         main_post.views += 1
         main_post.save()
-        recommended_posts = Post.objects.exclude(id = main_post.id).filter(topic = main_post.topic).order_by('-create_at')[:2]
+        recommended_posts = Post.objects.exclude(id = main_post.id).filter(topic = main_post.topic, is_draft = False).order_by('-create_at')[:2]
     else:
         try:
             if topic:
-                main_post = Post.objects.filter(topic=topic).order_by('-create_at').first()
+                main_post = Post.objects.filter(topic=topic, is_draft = False).order_by('-create_at').first()
                 main_post.views += 1
                 main_post.save()
-                recommended_posts = Post.objects.filter(topic=topic).exclude(id=main_post.id).order_by('-create_at')[:2]
+                recommended_posts = Post.objects.filter(topic=topic, is_draft = False).exclude(id=main_post.id).order_by('-create_at')[:2]
             else:
-                main_post = Post.objects.order_by('-create_at').first()
-                recommended_posts = Post.objects.exclude(id=main_post.id).order_by('-create_at')[:2]
+                main_post = Post.objects.filter(is_draft = False).order_by('-create_at').first()
+                recommended_posts = Post.objects.filter(is_draft = False).exclude(id=main_post.id).order_by('-create_at')[:2]
         except:
             main_post = None
             recommended_posts = None
@@ -121,8 +121,8 @@ def board(request, topic=None, post_id=None):
     next_post = None
 
     if main_post:
-        prev_post = Post.objects.filter(create_at__lt=main_post.create_at).order_by('-create_at').first()
-        next_post = Post.objects.filter(create_at__gt=main_post.create_at).order_by('create_at').first()
+        prev_post = Post.objects.filter(create_at__lt=main_post.create_at, is_draft = False).order_by('-create_at').first()
+        next_post = Post.objects.filter(create_at__gt=main_post.create_at, is_draft = False).order_by('create_at').first()
 
 
     post_id = main_post.id if main_post else None
