@@ -29,16 +29,24 @@
                             {{ main_post.title }}
                         </div>
                         <div id="rectUser">
-                            by 사용자(예시) {{ main_post.author_id }}
+                            {% if not main_post.author_id %}
+                            by 이름 없는 사용자
+                            {% else %}
+                            by {{ main_post.author_id }}
+                            {% endif %}
                         </div>
                         <div id="rectTopic">
                             {{ main_post.topic }}
-                            
                         </div>
                     </div>
                     <div class="rectMain">
-                        
                         {{ main_post.content|safe }}
+                    </div>
+                    <div class="views">
+                        <div class="viewsInfo">
+                            <img src="{% static 'img/eyes.png' %}" alt="">
+                            {{ main_post.views }}
+                        </div>
                     </div>
                 </div>
                 <div class="subRectangle">
