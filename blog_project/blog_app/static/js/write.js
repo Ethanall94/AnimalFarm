@@ -46,12 +46,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 let temp = '';
                 let dList = data.message.split('\n');
                 console.log(dList);
-                for(let text of dList) {
-                    temp += '<p>' + text + '</p>';
+                for (let text of dList) {
+                    temp += `<p>${text}</p>`;
                 }
                 console.log(temp);
-                // summer.innerHTML += temp;
-                summer.append(temp);
+                summer.innerHTML += temp;
             })
             .catch(error => {
                 console.error('Error:', error);
