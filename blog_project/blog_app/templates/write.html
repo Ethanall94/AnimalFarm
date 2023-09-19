@@ -25,12 +25,13 @@
                 {{ form.content|safe }}
             </div>
             <div class="rightPanel">
-                <button class="aiCompletion">
+                <button type="button" id="aiAutocompleteButton" class="aiCompletion">
                     <img id="ai-img" src="{% static 'img/ai.svg' %}" alt="AI 아이콘" />
                     <div id="loading-animation" style="display: none;">
-                      <img src="{% static 'img/loading.gif' %}" alt="로딩 중" />
-                    </div>  
-                    AI 자동 완성</button>
+                        <img src="{% static 'img/loading.gif' %}" alt="로딩 중" />
+                    </div> 
+                    AI 글 자동완성
+                </button>
                 <div class="topics">
                     <div class="topicsTitle">{{ form.topic.label }}</div>
                     {% for topic_choice in form.topic_choices %}
@@ -75,6 +76,6 @@
     </footer>
 
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> {% endcomment %}
 <script src="{% static 'js/write.js' %}"></script>
 </html>
