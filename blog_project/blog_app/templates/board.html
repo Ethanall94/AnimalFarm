@@ -13,24 +13,7 @@
     <title>board</title>
 </head>
 <body>
-    <nav id="nav">
-        <div class="logo">
-            <img src="{% static 'img/blackLogo.svg' %}" alt="">
-            <a href="/">MYLOG</a>
-        </div>
-        
-        <div class="navBtn">
-            <ul>
-                <li><a href="{% url 'board-topic' topic='일상' %}">일상</a></li>
-                <li><a href="{% url 'board-topic' topic='요리' %}">요리</a></li>
-                <li><a href="{% url 'board-topic' topic='여행' %}">여행</a></li>
-                <li><a href="{% url 'board-topic' topic='영화' %}">영화</a></li>
-                <li><a href="{% url 'board-topic' topic='IT' %}">IT</a></li>
-                <li class="logoutBtn"><a href="{% url 'logout' %}">Logout</a></li>
-            </ul>
-            <a href="{% url 'write' %}"><button>Just Write!</button></a>
-        </div>
-    </nav>
+    {% include 'nav_white.html' %}
     <div class="board">
         <div class="totalRectangle">
             <div class="top">
@@ -40,7 +23,7 @@
                         <div>🔒임시 저장된 글입니다.</div>
                         {% endif %}
                         <div id="dateCreate">
-                            {{ main_post.create_at }}
+                            {{ main_post.create_at|date:"Y.m.d" }}
                         </div>
                         <div id="rectTitle">
                             {{ main_post.title }}
@@ -63,16 +46,18 @@
                     {% for recommended_post in recommended_posts %}
                     <div id="subRectangleSmall">
                         <div class="subRectReccomend">
-                            <div id="reccomendPic">
-                                {% if recommended_post.content_poster %}
-                                <img src="{{ recommended_post.content_poster.url }}">
-                                {% else %}
-                                사진 없다
-                                {% endif %}
-                            </div>
-                            <div id="reccomendTitle">
-                                {{ recommended_post.title }}
-                            </div>
+                            <a href="{% url 'board_id' recommended_post.id %}">
+                                <div id="reccomendPic">
+                                    {% if recommended_post.content_poster %}
+                                    <img src="{{ recommended_post.content_poster.url }}">
+                                    {% else %}
+                                    <img src="{{ Animal|random }}">
+                                    {% endif %}
+                                </div>
+                                <div id="reccomendTitle">
+                                    {{ recommended_post.title }}
+                                </div>
+                            </a>
                         </div>
                     </div>
                     {% endfor %}
@@ -110,15 +95,40 @@
                 <div class="previousPost">
                     <div class="previous">이전글</div>
                     <div class="postDetail">
-                        <div id="prePostTitle"></div>
-                        <div id="prePostDate"></div>
+                        <div id="prePostTitle">
+                            {% if prev_post %}
+                            <a href="{% url 'board_id' prev_post.id %}">
+                                {{ prev_post.title }}
+                            </a>
+                            {% else %}
+                            없음
+                            {% endif %}
+                        </div>
+                        <div id="prePostDate">
+                            {% if prev_post %}
+                                {{ prev_post.create_at|date:"Y.m.d" }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
+
                 <div class="nextPost">
                     <div class="next">다음글</div>
                     <div class="postDetail">
-                        <div id="nextPostTitle"></div>
-                        <div id="nextPostDate"></div>
+                        <div id="nextPostTitle">
+                            {% if next_post %}
+                            <a href="{% url 'board_id' next_post.id %}">
+                                {{ next_post.title }}
+                            </a>
+                            {% else %}
+                            없음
+                            {% endif %}
+                        </div>
+                        <div id="nextPostDate">
+                            {% if next_post %}
+                                {{ next_post.create_at|date:"Y.m.d" }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
