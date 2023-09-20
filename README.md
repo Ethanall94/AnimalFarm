@@ -7,7 +7,6 @@ Personal Blog as a Django Project
 <br />
 
 # 💻서비스 화면
-***
 ### 메인 화면
 ![image](https://github.com/bnz18/AnimalFarm/assets/135521917/c7885b06-3746-42a4-a684-ec5519a9a8e0)
 
@@ -24,7 +23,6 @@ Personal Blog as a Django Project
 
 
 # 📢 주요 기능
-***
 - 로그인/로그아웃
 - 글 작성하기, 삭제, 수정, 공유 하기
 - 글 클릭 시 조회수 표시
@@ -36,14 +34,12 @@ Personal Blog as a Django Project
 <br />
 
 # 😊 협업
-***
 - 노션, 디스코드를 이용한 소통, 각자 파트를 분담해 작업
 - 매일 작업 완료 후 main브랜치에서 머지 및 팀 노션에 작업 내역 정리
 
 <br />
  
 # 🔨 기술 스택
-***
 - HTML
 - CSS
 - JS
@@ -52,7 +48,6 @@ Personal Blog as a Django Project
 <br />
 
 # 동물농장 팀원
-***
 <table>
   <tr>
     <td align="center" width="150px">
