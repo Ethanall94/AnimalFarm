@@ -124,6 +124,6 @@ form {
     gap: 10px;
 }
 
-#id_title::placeholder {
-    padding: 10px;
+#id_title {
+    padding-left: 10px;
 }
