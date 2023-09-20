@@ -11,7 +11,7 @@ Personal Blog as a Django Project
 ![image](https://github.com/bnz18/AnimalFarm/assets/135521917/c7885b06-3746-42a4-a684-ec5519a9a8e0)
 
 ### 글 작성
-![image](https://github.com/bnz18/AnimalFarm/assets/135521917/f046b8eb-9201-46ed-8367-bf5a153bf38c)
+![image](https://github.com/bnz18/AnimalFarm/assets/135521917/1525887f-ed44-4222-8ea9-92ba6973a471)
 
 ### 글 상세 페이지
 ![image](https://github.com/bnz18/AnimalFarm/assets/135521917/d14d1491-9dab-4711-8934-18d90474a434)
